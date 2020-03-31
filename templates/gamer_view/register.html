@@ -8,10 +8,10 @@
 {% block body_block %}
 <h1>Register for gamer_view</h1>
 {% if registered %}
-Rango says: <strong>thank you for registering!</strong>
-<a href="{% url 'gamer_view:Home' %}">Return to the homepage.</a><br />
+<strong>Thank you for registering!</strong>
+<a href="{% url 'gamer_view:Home' %}">Return to the homepage</a><br />
 {% else %}
-Rango says: <strong>register here!</strong><br />
+<strong>Register here!</strong><br />
 <form id="user_form" method="post" action="{% url 'gamer_view:register' %}" enctype="multipart/form-data">
 
     {% csrf_token %}
