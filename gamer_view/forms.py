@@ -1,5 +1,5 @@
 from django import forms
-from rango.models import Page, Category, UserProfile
+from gamer_view.models import Page, Category, UserProfile
 from django.contrib.auth.models import User
 
 class UserForm(forms.ModelForm):
