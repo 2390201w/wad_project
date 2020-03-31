@@ -3,6 +3,9 @@ from django.db import models
 # Create your models here.
 
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
+
+
 
 class UserProfile(models.Model):
     # This line is required. Links UserProfile to a User model instance.
@@ -26,14 +29,43 @@ class User(models.Model):
     def __str__(self):
         return self.user
     
+	
+	
 class Reviews(models.Model):
-    REVIEWI_ID = models.IntegerField(unique=True,db_index=True)
+        REVIEW_ID = models.PositiveIntegerField(unique=True,db_index=True,
+					(validators=[MinValueValidator(0),MaxValueValidator(10)])
 	review=models.CharField(max_length=500)
 	madeby_name=models.CharField(max_length=20)
 	timecreated=models.DateTimeField(auto_now=True)
-	rating=models.SmallIntegerField
+	rating=models.PositiveSmallIntegerField(validators=[MinValueValidator(0),MaxValueValidator(10)])
 	def __str__(self):
 	    return self.reviews    
 
-    
+class Game(models.Model):
+	categories_choice=(
+		(0,'FPS'),
+		(1,'MOBA'),	
+		(2,'Action'),
+		(3, 'MMORPG'),
+		(4,'Strategy'),
+		(5,'Sport'),	
+	)
+	gameid=models.PositiveIntegerField(unique=True,db_index=True，
+				   (validators=[MinValueValidator(0),MaxValueValidator(10)])
+	gamename=models.CharField(max_length=20,unique=True)
+					   
+	# This to choice different type.
+	category=models.CharFiels(max_length=20,choice=categories_choice)
+	addby_name=models.CharFiels(max_length=20)
+	time_created=models.DateTimeField(auto_now_add=True)
+	Description=models.CharFiels(max_length=500)
+	image = models.ImageField(upload_to='game_images', blank=True)
+	view=picture = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(10)])
+	def __str__(self):
+	    return self.game
+	
+	
+	
+	
+	
     
