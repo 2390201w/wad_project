@@ -14,3 +14,26 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+    
+    
+    
+class User(models.Model):
+	userid=models.CharField(max_length=20,unique=True)
+	usename=models.CharField(max_length=20)
+	password=models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.user
+    
+class Reviews(models.Model):
+    REVIEWI_ID = models.IntegerField(unique=True,db_index=True)
+	review=models.CharField(max_length=500)
+	madeby_name=models.CharField(max_length=20)
+	timecreated=models.DateTimeField(auto_now=True)
+	rating=models.SmallIntegerField
+	def __str__(self):
+	    return self.reviews    
+
+    
+    
