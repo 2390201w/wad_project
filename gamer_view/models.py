@@ -23,7 +23,7 @@ class UserProfile(models.Model):
     
 class User(models.Model):
 	userid=models.CharField(max_length=20,unique=True)
-	usename=models.CharField(max_length=20)
+	username=models.CharField(max_length=20)
 	password=models.CharField(max_length=20)
 
     def __str__(self):
@@ -41,7 +41,7 @@ class Reviews(models.Model):
 	def __str__(self):
 	    return self.reviews    
 
-class Game(models.Model):
+class Page(models.Model):
 	categories_choice=(
 		(0,'FPS'),
 		(1,'MOBA'),	
@@ -62,7 +62,7 @@ class Game(models.Model):
 	image = models.ImageField(upload_to='game_images', blank=True)
 	view=picture = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(10)])
 	def __str__(self):
-	    return self.game
+	    return self.page.gamename
 	
 	
 	
