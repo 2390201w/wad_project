@@ -4,6 +4,7 @@ from django.db import models
 
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db.models import Avg
 
 
 
@@ -32,6 +33,8 @@ class User(models.Model):
 	
 	
 class Reviews(models.Model):
+	game_id=models.PositiveIntegerField(unique=True,db_index=True，
+				   (validators=[MinValueValidator(0),MaxValueValidator(10)])
         REVIEW_ID = models.PositiveIntegerField(unique=True,db_index=True,
 					(validators=[MinValueValidator(0),MaxValueValidator(10)])
 	review=models.CharField(max_length=500)
@@ -56,6 +59,12 @@ class Page(models.Model):
 					   
 	# This to choice different type.
 	category=models.CharFiels(max_length=20,choice=categories_choice)
+					   
+					   
+	# This is average rating.
+	average_rating=Reviews.objects.values('game_id').annotate(Avg('rating'))
+					   			   
+					   
 	addby_name=models.CharFiels(max_length=20)
 	time_created=models.DateTimeField(auto_now_add=True)
 	Description=models.CharFiels(max_length=500)
