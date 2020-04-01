@@ -19,7 +19,7 @@ from django.urls import include
 from gamer_view import views
 
 urlpatterns = [
-    path('', views.Home, name="Home"),
+    path('', views.home, name="home"),
     path('gamer_view/', include('gamer_view.urls')),
     path('admin/', admin.site.urls),
 ]

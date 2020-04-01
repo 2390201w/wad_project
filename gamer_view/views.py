@@ -7,16 +7,16 @@ from gamer_view.models import Category, Page
 
 
 # Create your views here
-def Home(request):
+def home(request):
     #Get the latest adeed page
     page_list = Page.objects.order_by('-time_created')[:3]
 
     context_dict={}
     context_dict['pages']=page_list
-    return render(request, 'gamer_view/Home.html', context=context_dict)
+    return render(request, 'gamer_view/home.html', context=context_dict)
 
-def AboutUs (request):
-    return HttpResponse(request, 'gamer_view/AboutUs.html')
+def about(request):
+    return HttpResponse(request, 'gamer_view/about.html')
 
 def show_category(request, category_name_slug):
     context_dict={}
@@ -36,7 +36,7 @@ def show_category(request, category_name_slug):
         context_dict['category'] =None
         context_dict['pages']=None
 
-    return render(request, 'gamer_view/Category.html', context=context_dict)
+    return render(request, 'gamer_view/category.html', context=context_dict)
 
 def show_page(request, pageName):
     context_dict={}
@@ -52,9 +52,9 @@ def show_page(request, pageName):
         context_dict['page']=None
         context_dict['reviews']=None
 
-    return render(request, 'gamer_view/Page.html', context=context_dict)
+    return render(request, 'gamer_view/page.html', context=context_dict)
 
-def Trending(request):
+def trending(request):
     # Get the top rated pages
     top_rated_pages= Page.object.order_by('-rate')[:5]
 
@@ -63,7 +63,7 @@ def Trending(request):
 
     context_dict['top_rate_pages']=top_rated_pages
     context_dict['most_viewed']=most_viewed
-    return render(request, 'gamer_view/Trending.html', context=context_dict)
+    return render(request, 'gamer_view/trending.html', context=context_dict)
 
 
 
@@ -96,7 +96,7 @@ def register(request):
         user_form = UserForm()
         profile_form = UserProfileForm()
 
-    return render(request, 'gamer_view/Register.html', context = {'user_form' : user_form,
+    return render(request, 'gamer_view/register.html', context = {'user_form' : user_form,
                                                                     'profile_form' : profile_form,
                                                                     'registered' : registered})
 
@@ -119,5 +119,5 @@ def user_login(request):
             return HttpResponse("Invalid login details supplied.")
 
     else:
-        return render(request,'gamer_view/Login.html')
+        return render(request,'gamer_view/login.html')
 

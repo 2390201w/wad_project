@@ -19,11 +19,33 @@ class Category(models.Model):
 
     def __str__(self):
         return self.category
+
+class Page(models.Model):
+    gamename=models.CharField(max_length=20,unique=True)
+
+    # links the page to category M:1
+    category= models.ForeignKey(Category, on_delete=models.CASCADE)
+					   
+					   
+    # This is average rating.
+    # wont work cos reviews is not created before page
+   # average_rating=Reviews.objects.values('gamename').annotate(Avg('rating'))
+					   			   
+					   
+    addby_name=models.CharField(max_length=20)
+    time_created=models.DateTimeField(auto_now_add=True)
+    Description=models.CharField(max_length=500)
+    image = models.ImageField(upload_to='game_images', blank=True)
+    views=models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.page.gamename	
+
     
 class Reviews(models.Model):
 
     # Links the review to Page(Game) M:1 
-    gamename=models.ForeignKey('Page', on_delete=models.CASCADE)
+    gamename=models.ForeignKey(Page, on_delete=models.CASCADE)
     
     REVIEW_ID = models.PositiveIntegerField(unique=True,db_index=True,
                                     validators=[MinValueValidator(0)])
@@ -36,25 +58,6 @@ class Reviews(models.Model):
     def __str__(self):
         return self.review
 
-class Page(models.Model):
-    gamename=models.CharField(max_length=20,unique=True)
-
-    # links the page to category M:1
-    category= models.ForeignKey(Category, on_delete=models.CASCADE)
-					   
-					   
-    # This is average rating.
-    average_rating=Reviews.objects.values('gamename').annotate(Avg('rating'))
-					   			   
-					   
-    addby_name=models.CharField(max_length=20)
-    time_created=models.DateTimeField(auto_now_add=True)
-    Description=models.CharField(max_length=500)
-    image = models.ImageField(upload_to='game_images', blank=True)
-    views=models.PositiveIntegerField(default=0)
-
-    def __str__(self):
-        return self.page.gamename	
 	
 	
 class UserProfile(models.Model):
