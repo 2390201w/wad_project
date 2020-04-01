@@ -1,0 +1,46 @@
+.page_button {
+  border-radius: 18px;
+  border: 2px solid #000000;
+  background: #4572C4;
+  position: absolute;
+  width: 280px;
+  height: 100px;
+  margin-left:-140px;
+  text-align: center;
+  line-height: 25px;
+  color: white;
+  font-size: 40px;
+  font-family: "Bahnschrift";
+}
+
+#category_button {
+  top: 240px;
+  left: 22%;
+}
+
+#trending_button {
+  top: 240px;
+  left: 50%;
+}
+
+#about_us_button {
+  top: 240px;
+  left: 78%;
+}
+
+#latest_additions {
+  font-size: 34px;
+  line-height: 5px;
+  top: 550px;
+  left: 22%;
+}
+
+#latest_additions_box {
+  border-radius: 36px;
+  background: #595959;
+  position: absolute;
+  width: 80%;
+  height: 250px;
+  top: 615px;
+  margin-left: 10%;
+}
