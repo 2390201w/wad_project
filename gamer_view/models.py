@@ -7,11 +7,11 @@ from django.template.defaultfilters import slugify
 
 # Create your models here.
 class Category(models.Model):
-    category=models.CharField(max_length=30, unique=True)
+    category=models.CharField(max_length=30, primary_key=True)
     slug=models.SlugField()
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(selfname)
+        self.slug = slugify(self.category)
         super(Category, self).save(*args, **kwargs)
 
     class Meta:
@@ -21,23 +21,23 @@ class Category(models.Model):
         return self.category
 
 class Page(models.Model):
-    gamename=models.CharField(max_length=20,unique=True)
+    gamename=models.CharField(max_length=30,unique=True)
 
     # links the page to category M:1
-    category= models.ForeignKey(Category, on_delete=models.CASCADE)
+    cat= models.ForeignKey(Category, on_delete=models.CASCADE)
 					   
 					   
     # This is average rating.
     # wont work cos reviews is not created before page
    # average_rating=Reviews.objects.values('gamename').annotate(Avg('rating'))
 					   			   
-    time_created=models.DateTimeField(auto_now_add=True)
+    time_created=models.DateField(auto_now_add=True)
     description=models.CharField(max_length=500)
     image = models.ImageField(upload_to='game_images', blank=True)
     views=models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return self.page.gamename	
+        return self.gamename	
 
     
 class Reviews(models.Model):
