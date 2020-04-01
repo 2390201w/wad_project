@@ -9,7 +9,7 @@ from gamer_view.models import Category, Page
 # Create your views here
 def Home(request):
     #Get the latest adeed page
-    page_list = Page.objects.order_by('-date')[:3]
+    page_list = Page.objects.order_by('-time_created')[:3]
 
     context_dict={}
     context_dict['pages']=page_list
@@ -22,7 +22,7 @@ def show_category(request, category_name_slug):
     context_dict={}
 
     try:
-        #Get all the categories
+        #Gets the category
         category = Category.objects.get(slug=category_name_slug)
 
         
@@ -37,6 +37,22 @@ def show_category(request, category_name_slug):
         context_dict['pages']=None
 
     return render(request, 'gamer_view/Category.html', context=context_dict)
+
+def show_page(request, pageName):
+    context_dict={}
+
+    try:
+        page = Page.objects.get(pageName=gamename)
+        reviews= Reviews.objects.filter(gamename=gamename)
+
+        context_dict['page']=page
+        context_dict['reviews']=reviews
+
+    except Page.DoesNotExist:
+        context_dict['page']=None
+        context_dict['reviews']=None
+
+    return render(request, 'gamer_view/Page.html', context=context_dict)
 
 def Trending(request):
     # Get the top rated pages
@@ -80,7 +96,7 @@ def register(request):
         user_form = UserForm()
         profile_form = UserProfileForm()
 
-    return render(request, 'gamer_view/register.html', context = {'user_form' : user_form,
+    return render(request, 'gamer_view/Register.html', context = {'user_form' : user_form,
                                                                     'profile_form' : profile_form,
                                                                     'registered' : registered})
 
@@ -103,5 +119,5 @@ def user_login(request):
             return HttpResponse("Invalid login details supplied.")
 
     else:
-        return render(request,'gamer_view/login.html')
+        return render(request,'gamer_view/Login.html')
 

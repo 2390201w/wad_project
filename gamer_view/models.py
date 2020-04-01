@@ -5,6 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db.models import Avg
+from django.template.defaultfilters import slugify
 
 
 
@@ -29,68 +30,61 @@ class User(models.Model):
 
 	def __str__(self):
 		return self.user
-    
-	
-	
-class Reviews(models.Model):
-	game_id=models.PositiveIntegerField(unique=True,db_index=True,
-				   validators=[MinValueValidator(0),MaxValueValidator(10)])
-	REVIEW_ID = models.PositiveIntegerField(unique=True,db_index=True,
-					validators=[MinValueValidator(0),MaxValueValidator(10)])
-	review=models.CharField(max_length=500)
-	madeby_name=models.CharField(max_length=20)
-	timecreated=models.DateTimeField(auto_now=True)
-	rating=models.PositiveSmallIntegerField(validators=[MinValueValidator(0),MaxValueValidator(10)])
-	def __str__(self):
-	    return self.reviews    
 
 
-
-
-#change
 class Category(models.Model):
-	categories_choice=(
-		(0,'FPS'),
-		(1,'MOBA'),	
-		(2,'Action'),
-		(3, 'MMORPG'),
-		(4,'Strategy'),
-		(5,'Sport'),	
-	)
-	# This to choice different type.
-	category=models.CharField(max_length=20,choices=categories_choice)
-	gameid=models.PositiveIntegerField(unique=True,db_index=True,
-				   validators=[MinValueValidator(0),MaxValueValidator(10)])
+    
+	# This to choose the different type.
+	category=models.CharField(max_length=30, unique=True)
+	slug=models.SlugField()
+
+	def save(self, *args, **kwargs):
+            self.slug = slugify(selfname)
+            super(Category, self).save(*args, **kwargs)
+
+        class Meta:
+            verbose_name_plural= 'categories'
+	
 	def __str__(self):
-	    return self.gameid
-
-
-
-
+	    return self.category
 
 
 class Page(models.Model):
 
-	gameid=models.PositiveIntegerField(unique=True,db_index=True,
-				   validators=[MinValueValidator(0),MaxValueValidator(10)])
 	gamename=models.CharField(max_length=20,unique=True)
-					   
 
+        # links the page to category M:1
+	category= models.ForeignKey(Category, on_delete=models.CASCADE)
 					   
 					   
 	# This is average rating.
-	average_rating=Reviews.objects.values('game_id').annotate(Avg('rating'))
+	average_rating=Reviews.objects.values('gameid').annotate(Avg('rating'))
 					   			   
 					   
 	addby_name=models.CharField(max_length=20)
 	time_created=models.DateTimeField(auto_now_add=True)
 	Description=models.CharField(max_length=500)
 	image = models.ImageField(upload_to='game_images', blank=True)
-	view=models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(10)])
-	def __str__(self):
+	views=models.PositiveIntegerField(default=0)
+
+        def __str__(self):
 	    return self.page.gamename
 	
+class Reviews(models.Model):
+
+        # Links the review to Page(Game) M:1 
+	gamename=models.ForeignKey(Page, on_delete=models.CASCADE)
 	
+	REVIEW_ID = models.PositiveIntegerField(unique=True,db_index=True,
+					validators=[MinValueValidator(0)])
+	
+	review=models.CharField(max_length=500)
+	madeby_name=models.CharField(max_length=20)
+	timecreated=models.DateTimeField(auto_now=True)
+	rating=models.PositiveSmallIntegerField(validators=[MinValueValidator(0),MaxValueValidator(5)])
+
+	def __str__(self):
+	    return self.review  	
 	
 	
 	
