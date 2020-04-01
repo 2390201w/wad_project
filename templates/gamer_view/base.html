@@ -1,72 +1,80 @@
 <!DOCTYPE html>
+{% load static %}
+{% load rango_template_tags %}
+
 <html>
-<head>
-<style>
-body, html {
-  height: 100%;
-  margin: 0px;
-  background-image: linear-gradient(rgba(0, 114, 220), rgba(0, 64, 120));
-}
+	<head>
+		<title>
+			Gamer-view - 
+            {% block title_block %}
+                Welcome!
+            {% endblock %}
+		</title>
+		<style>
+			{% block css %}
+				body, html {
+				  height: 100%;
+				  margin: 0px;
+				  background-image: linear-gradient(rgba(0, 114, 220), rgba(0, 64, 120));
+				}
 
-.banner {
-  height: 150px;
-  background-color: #595959;
-}
+				.banner {
+				  height: 150px;
+				  background-color: #595959;
+				}
 
-#icon {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-}
+				#icon {
+				  position: absolute;
+				  top: 0px;
+				  left: 0px;
+				}
 
-#title {
-  position: absolute;
-  top: 92px;
-  left: 50%;
-}
+				#title {
+				  position: absolute;
+				  top: 92px;
+				  left: 50%;
+				}
 
-.banner_button {
-  border-radius: 10px;
-  border: 2px solid #000000;
-  background: #4572C4;
-  width: 140px;
-  height: 50px;
-  text-align: center;
-  line-height: 0px;
-  color: white;
-  font-size: 28px;
-  font-family: "Bahnschrift";
-}
+				.banner_button {
+				  border-radius: 10px;
+				  border: 2px solid #000000;
+				  background: #4572C4;
+				  width: 140px;
+				  height: 50px;
+				  text-align: center;
+				  line-height: 0px;
+				  color: white;
+				  font-size: 28px;
+				  font-family: "Bahnschrift";
+				}
 
-#banner_button_1 {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-}
+				#banner_button_1 {
+				  position: absolute;
+				  top: 15px;
+				  right: 20px;
+				}
 
-#banner_button_2 {
-  position: absolute;
-  top: 80px;
-  right: 20px;
-}
-
-</style>
-</head>
-<body>
-
-<div class="banner"></div>
-<div id="icon">
-  <img src={% static 'images/controller.png' %} alt="Controller" style="width:150px">
-</div>
-<div id="title">
-  <img src={% static 'images/title.png' %} alt="Title">
-</div>
-<div id="banner_button_1" class="banner_button">
-  <p> Sign In </p>
-</div>
-<div id="banner_button_2" class="banner_button">
-  <p> Register </p>
-</div>
-
-</body>
+				#banner_button_2 {
+				  position: absolute;
+				  top: 80px;
+				  right: 20px;
+				}
+			{% endblock %}
+		</style>
+	</head>
+	<body>
+		<div class="banner"></div>
+		<div id="icon">
+		  <img src={% static 'images/controller.png' %} alt="Controller" style="width:150px">
+		</div>
+		<div id="title">
+		  <img src={% static 'images/title.png' %} alt="Title">
+		</div>
+		<div id="banner_button_1" class="banner_button">
+		  <p> Sign In </p>
+		</div>
+		<div id="banner_button_2" class="banner_button">
+		  <p> Register </p>
+		</div>
+	</body>
 </html>

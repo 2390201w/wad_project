@@ -1,0 +1,51 @@
+{% extends 'gamer_view/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    About Us
+{% endblock %}
+
+{% block css  %}
+	#content_box {
+	  border-radius: 70px;
+	  border: 4px solid #4572C4;
+	  background: #595959;
+	  width: 500px;
+	  height: 400px;
+	  text-align: center;
+	  line-height: 10px;
+	  color: white;
+	  font-size: 40px;
+	  font-family: "Bahnschrift";
+	  -webkit-text-stroke: 1px #4572C4;
+	  
+	  position: absolute;
+	  top: 200px;
+	  left: 50%;
+	  margin-left: -250px;
+	}
+
+	#content_text {
+	  width: 480px;
+	  color: white;
+	  font-size: 20px;
+	  font-family: "Bahnschrift";
+	  text-align: center;
+	  
+	  position: absolute;
+	  top: 285px;
+	  left: 50%;
+	  margin-left: -240px;
+	}
+{% endblock %}
+
+{% block body_block %}
+	<div id="content_box">
+	  <p> About Us </p>
+	</div>
+	<div id="content_text">
+	  <p>
+		* Text Here *
+	  </p>
+	</div>
+{% endblock %}
