@@ -31,10 +31,8 @@ class Page(models.Model):
     # wont work cos reviews is not created before page
    # average_rating=Reviews.objects.values('gamename').annotate(Avg('rating'))
 					   			   
-					   
-    addby_name=models.CharField(max_length=20)
     time_created=models.DateTimeField(auto_now_add=True)
-    Description=models.CharField(max_length=500)
+    description=models.CharField(max_length=500)
     image = models.ImageField(upload_to='game_images', blank=True)
     views=models.PositiveIntegerField(default=0)
 

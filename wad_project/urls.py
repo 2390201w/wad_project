@@ -24,4 +24,4 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('gamer_view/', include('gamer_view.urls')),
     path('admin/', admin.site.urls),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
