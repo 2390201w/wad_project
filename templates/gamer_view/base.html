@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body, html {
+  height: 100%;
+  margin: 0px;
+  background-image: linear-gradient(rgba(0, 114, 220), rgba(0, 64, 120));
+}
+
+.banner {
+  height: 150px;
+  background-color: #595959;
+}
+
+#icon {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#title {
+  position: absolute;
+  top: 92px;
+  left: 50%;
+}
+
+</style>
+</head>
+<body>
+
+<div class="banner"></div>
+<div id="icon">
+  <img src={% static 'images/controller.png' %} alt="Controller" style="width:150px">
+</div>
+<div id="title">
+  <img src={% static 'images/title.png' %} alt="Title">
+</div>
+
+</body>
+</html>
