@@ -44,7 +44,11 @@ class Reviews(models.Model):
 	def __str__(self):
 	    return self.reviews    
 
-class Page(models.Model):
+
+
+
+#change
+class Category(models.Model):
 	categories_choice=(
 		(0,'FPS'),
 		(1,'MOBA'),	
@@ -53,12 +57,25 @@ class Page(models.Model):
 		(4,'Strategy'),
 		(5,'Sport'),	
 	)
+	# This to choice different type.
+	category=models.CharField(max_length=20,choices=categories_choice)
+	gameid=models.PositiveIntegerField(unique=True,db_index=True,
+				   validators=[MinValueValidator(0),MaxValueValidator(10)])
+	def __str__(self):
+	    return self.gameid
+
+
+
+
+
+
+class Page(models.Model):
+
 	gameid=models.PositiveIntegerField(unique=True,db_index=True,
 				   validators=[MinValueValidator(0),MaxValueValidator(10)])
 	gamename=models.CharField(max_length=20,unique=True)
 					   
-	# This to choice different type.
-	category=models.CharField(max_length=20,choices=categories_choice)
+
 					   
 					   
 	# This is average rating.
@@ -69,7 +86,7 @@ class Page(models.Model):
 	time_created=models.DateTimeField(auto_now_add=True)
 	Description=models.CharField(max_length=500)
 	image = models.ImageField(upload_to='game_images', blank=True)
-	view=picture = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(10)])
+	view=models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(10)])
 	def __str__(self):
 	    return self.page.gamename
 	

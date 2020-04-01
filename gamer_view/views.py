@@ -9,10 +9,10 @@ from gamer_view.models import Category, Page
 # Create your views here
 def Home(request):
     #Get the latest adeed page
-    page_list = Page.objects.order_by(-'date')[:3]
+    page_list = Page.objects.order_by('-date')[:3]
 
     context_dict={}
-    context['pages']=page_list
+    context_dict['pages']=page_list
     return render(request, 'gamer_view/Home.html', context=context_dict)
 
 def AboutUs (request):
@@ -23,7 +23,8 @@ def show_category(request, category_name_slug):
 
     try:
         #Get all the categories
-        category = Category.objects.get(slug=category_name_slug)
+        category = Category.objects.get(slug=category_name_slug)
+
         
         #Get the related pages
         pages=Page.objects.filter(category=category)
@@ -31,7 +32,7 @@ def show_category(request, category_name_slug):
         context_dict['pages']=pages
         context_dict['category']=category
 
-    except Categpry.DoesNotExist:
+    except Category.DoesNotExist:
         context_dict['category'] =None
         context_dict['pages']=None
 
