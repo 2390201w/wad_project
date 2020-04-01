@@ -1,0 +1,48 @@
+body, html {
+  height: 100%;
+  margin: 0px;
+  background-image: linear-gradient(rgba(0, 114, 220), rgba(0, 64, 120));
+}
+
+#banner {
+  height: 150px;
+  background-color: #595959;
+}
+
+#icon {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#title {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  margin-left: -305px;
+}
+
+.banner_button {
+  border-radius: 10px;
+  border: 2px solid #000000;
+  background: #4572C4;
+  width: 140px;
+  height: 50px;
+  text-align: center;
+  line-height: 0px;
+  color: white;
+  font-size: 28px;
+  font-family: "Bahnschrift";
+}
+
+#banner_button_1 {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+#banner_button_2 {
+  position: absolute;
+  top: 80px;
+  right: 20px;
+}

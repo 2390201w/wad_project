@@ -16,7 +16,7 @@ def home(request):
     return render(request, 'gamer_view/home.html', context=context_dict)
 
 def about(request):
-    return HttpResponse(request, 'gamer_view/about.html')
+    return render(request, 'gamer_view/about.html')
 
 def show_category(request, category_name_slug):
     context_dict={}
@@ -110,7 +110,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request,user)
-                return redirect(reverse('gamer_view:Home'))
+                return redirect(reverse('gamer_view:home'))
             else:
                 return HttpResponse('Your gamer_view account is disabled.')
         
