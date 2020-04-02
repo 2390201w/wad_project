@@ -46,3 +46,23 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('picture',)
+
+class CategoryForm(forms.ModelForm):
+    category=forms.CharField(max_length=30, required=True)
+    slug = forms.CharField(widget=forms.HiddenInput(), required=False)
+
+
+    class Meta:
+        model =Category
+        fields=('category',)
+
+
+class PageForm(forms.ModelForm):
+    gamename= forms.CharField(max_length=30)
+    image= forms.ImageField(widget=forms.FileInput())
+    views=forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+    cat=forms.ModelChoiceField(queryset=Category.objects.all())
+    
+    class Meta:
+        model =Page
+        fields=('gamename', 'image', 'views', 'cat',)
