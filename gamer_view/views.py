@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from gamer_view.forms import UserForm, UserProfileForm
+from gamer_view.forms import UserForm, UserProfileForm ,CategoryForm
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from gamer_view.models import Category, Page
@@ -121,3 +121,36 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect(reverse('gamer_view:home'))
+
+
+def add_category(request):
+    form= CategoryForm()
+
+    if request.method =='POST':
+        form = CategoryForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+            return redirect('/gamer_view/category.html')
+        else:
+            messages.error(request, "Fields must not be empty")
+            return redirect(reverse('gamer_view:add_category'))
+        
+    return render(request, 'gamer_view/add_category.html')
+
+def add_page(request):
+    form = PageForm()
+    if request.method =='POST':
+        form = PageForm(request.POST)
+        if form.is_valid():
+            page= form.save(commit=True)
+            return redirect('/gamer_view/page.html')
+        else:
+            messages.error(request, "Fields must not be empty")
+            return redirect(reverse('gamer_view:add_page'))
+
+    return render(request, 'gamer_view/add_page.html')
+        
+            
+            
+                
