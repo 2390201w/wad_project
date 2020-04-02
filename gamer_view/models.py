@@ -39,25 +39,8 @@ class Page(models.Model):
     def __str__(self):
         return self.gamename	
 
-    
-class Reviews(models.Model):
-
-    # Links the review to Page(Game) M:1 
-    gamename=models.ForeignKey(Page, on_delete=models.CASCADE)
-    
-    REVIEW_ID = models.PositiveIntegerField(unique=True,db_index=True,
-                                    validators=[MinValueValidator(0)])
-    
-    review=models.CharField(max_length=500)
-    madeby_name=models.CharField(max_length=20)
-    datecreated=models.DateField(default=datetime.now)
-    rating=models.PositiveSmallIntegerField(validators=[MinValueValidator(0),MaxValueValidator(5)])
-
-    def __str__(self):
-        return self.review
-    
 class User(models.Model):
-    username=models.CharField(max_length=20)
+    username=models.CharField(max_length=20, unique=True)
     password=models.CharField(max_length=20)
     
 
@@ -75,5 +58,16 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.user
+    
+class Reviews(models.Model):
+    # Links the review to Page(Game) M:1 
+    gamename=models.ForeignKey(Page, on_delete=models.CASCADE)
+      
+    review=models.CharField(max_length=500)
+    madeby=models.ForeignKey(User,on_delete=models.CASCADE, null=True)
+    datecreated=models.DateField(default=datetime.now)
+    rating=models.PositiveSmallIntegerField(validators=[MinValueValidator(0),MaxValueValidator(5)])
 
+    def __str__(self):
+        return self.madeby
     
