@@ -55,9 +55,15 @@ class Reviews(models.Model):
 
     def __str__(self):
         return self.review
+    
+class User(models.Model):
+    username=models.CharField(max_length=20)
+    password=models.CharField(max_length=20)
+    
 
-	
-	
+    def __str__(self):
+        return self.username
+    
 class UserProfile(models.Model):
     
     # This line is required. Links UserProfile to a User model instance.
@@ -65,19 +71,9 @@ class UserProfile(models.Model):
 
     # The additional attributes we wish to include.
     picture = models.ImageField(upload_to='profile_images', blank=True)
-
-    def __str__(self):
-        return self.user.username
-
-    
-class User(models.Model):
-    userid=models.CharField(max_length=20,unique=True)
-    username=models.CharField(max_length=20)
-    password=models.CharField(max_length=20)
     email=models.EmailField(max_length=254, null=True)
 
     def __str__(self):
-        return self.user
+        return self.user.user
 
-	
     
