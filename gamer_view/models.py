@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db.models import Avg
 from django.template.defaultfilters import slugify
-
+from datetime import datetime
 
 # Create your models here.
 class Category(models.Model):
@@ -31,7 +31,7 @@ class Page(models.Model):
     # wont work cos reviews is not created before page
    # average_rating=Reviews.objects.values('gamename').annotate(Avg('rating'))
 					   			   
-    time_created=models.DateField(auto_now_add=True)
+    date_created=models.DateField(default= datetime.now)
     description=models.CharField(max_length=500)
     image = models.ImageField(upload_to='game_images', blank=True)
     views=models.PositiveIntegerField(default=0)
@@ -50,7 +50,7 @@ class Reviews(models.Model):
     
     review=models.CharField(max_length=500)
     madeby_name=models.CharField(max_length=20)
-    timecreated=models.DateTimeField(auto_now=True)
+    datecreated=models.DateField(default=datetime.now)
     rating=models.PositiveSmallIntegerField(validators=[MinValueValidator(0),MaxValueValidator(5)])
 
     def __str__(self):
@@ -74,7 +74,7 @@ class User(models.Model):
     userid=models.CharField(max_length=20,unique=True)
     username=models.CharField(max_length=20)
     password=models.CharField(max_length=20)
-    email=models.EmailField()
+    email=models.EmailField(max_length=254, null=True)
 
     def __str__(self):
         return self.user

@@ -9,7 +9,7 @@ from gamer_view.models import Category, Page
 # Create your views here
 def home(request):
     #Get the latest adeed page
-    page_list = Page.objects.order_by('-time_created')[:3]
+    page_list = Page.objects.order_by('-date_created')[:3]
 
     context_dict={}
     context_dict['pages']=page_list
