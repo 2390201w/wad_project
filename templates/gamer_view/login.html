@@ -8,15 +8,13 @@
 {% block body_block %}
 	<div class="content_box">
 	  <p>Sign in to Gamer-View</p>
-	</div>
-	<div id="login_page">
-		<form id="login_form" method="POST" action="{% url 'gamer_view:user_login' %}">
+		<form id="login_form" method="POST" action="{% url 'gamer_view:login' %}">
 			{% csrf_token %}
-			Username: <input type="text" name="username" maxlength="20" size="50" class="format_login_input" />
+			<p id="login_details">Username: <input type="text" name="username" maxlength="20" size="50" class="format_input" /></p>
 			<br />
-			Password: <input type="password" name="password" maxlength="20" size="50" class="format_login_input" />
+			<p id="login_details">Password: <input type="password" name="password" maxlength="20" size="50" class="format_input" /></p>
 			<br />
-			<input type="submit" value="Sign In" class="page_button" style="line-height:100px; top:402px; left:50.75%" />
+			<p id="login_details" style="top:-370px"><input type="submit" value="Sign In" class="page_button" style="line-height:100px; top:402px; left:50.75%" /></p>
 		</form>
 	</div>
 {% endblock %}

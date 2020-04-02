@@ -44,3 +44,18 @@
   top: 615px;
   margin-left: 10%;
 }
+
+#additions_images {
+  position: absolute;
+  top: 640px;
+  width: 80%;
+  left: 11.5%;
+}
+
+#additions_game_names {
+  font-size: 20px;
+  position: absolute;
+  top: 820px;
+  width: 75%;
+  left: 15%;
+}

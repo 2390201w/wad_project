@@ -18,4 +18,15 @@
 	  <p> Latest Additions </p>
 	</div>
 	<div id="latest_additions_box" class="page_button"></div>
+	
+	<div id="additions_images">
+	{% for page in pages %}
+		<a href="{{ page.url }}" style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="Title"></a>
+	{% endfor %}
+	</div>
+	<div id="additions_game_names">
+	{% for page in pages %}
+		<a href="{{ page.url }}" style="color:white; text-decoration:none; top:100px; margin-left:11%; margin-right:11%">{{ page.gamename }}</a>
+	{% endfor %}
+	</div>
 {% endblock %}
