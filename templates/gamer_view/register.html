@@ -2,26 +2,29 @@
 {% load staticfiles %}
 
 {% block title_block %}
-    Register
+Register
 {% endblock %}
 
 {% block body_block %}
-<h1>Register for gamer_view</h1>
-{% if registered %}
-<strong>Thank you for registering!</strong>
-<a href="{% url 'gamer_view:Home' %}">Return to the homepage</a><br />
-{% else %}
-<strong>Register here!</strong><br />
-<form id="user_form" method="post" action="{% url 'gamer_view:register' %}" enctype="multipart/form-data">
+<div id="register_page">
+    <h1>Register for gamer_view</h1>
+    {% if registered %}
+    <strong>Thank you for registering!</strong>
+    <a href="{% url 'gamer_view:home' %}">Return to the homepage</a><br />
+    {% else %}
+    <strong>Register here!</strong><br />
+    <form id="user_form" method="POST" action="{% url 'gamer_view:register' %}" enctype="multipart/form-data">
 
-    {% csrf_token %}
+        {% csrf_token %}
 
-    <!-- Display each form -->
-    {{ user_form.as_p }}
-    {{ profile_form.as_p }}
+        <!-- Display each form -->
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
 
-    <!-- Provide a button to click to submit the form. -->
-    <input type="submit" name="submit" value="Register" />
-</form>
-{% endif %}
+        <!-- Provide a button to click to submit the form. -->
+        <input type="submit" name="submit" value="Register" class="page_button" id="submit_button"/>
+    </form>
+    {% endif %}
+</div>
+
 {% endblock %}
