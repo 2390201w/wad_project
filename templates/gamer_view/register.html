@@ -14,7 +14,7 @@ Register
 		<strong>Thank you for registering!</strong>
 		<a href="{% url 'gamer_view:home' %}">Return to the homepage</a><br />
 		{% else %}
-		<form id="user_form" method="POST" action="{% url 'gamer_view:register' %}" enctype="multipart/form-data">
+		<form id="user_form" method="post" action="{% url 'gamer_view:register' %}" enctype="multipart/form-data">
 			{% csrf_token %}
 
 			<!-- Display each form -->

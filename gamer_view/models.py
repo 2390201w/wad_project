@@ -37,15 +37,7 @@ class Page(models.Model):
     views=models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return self.gamename	
-
-class User(models.Model):
-    username=models.CharField(max_length=20, unique=True)
-    password=models.CharField(max_length=20)
-    
-
-    def __str__(self):
-        return self.username
+        return self.gamename
     
 class UserProfile(models.Model):
     
@@ -54,17 +46,16 @@ class UserProfile(models.Model):
 
     # The additional attributes we wish to include.
     picture = models.ImageField(upload_to='profile_images', blank=True)
-    email=models.EmailField(max_length=254, null=True)
 
     def __str__(self):
-        return self.user.user
+        return self.user.username
     
 class Reviews(models.Model):
     # Links the review to Page(Game) M:1 
     gamename=models.ForeignKey(Page, on_delete=models.CASCADE)
       
     review=models.CharField(max_length=500)
-    madeby=models.ForeignKey(User,on_delete=models.CASCADE, null=True)
+    madeby=models.ForeignKey(UserProfile,on_delete=models.CASCADE, null=True)
     datecreated=models.DateField(default=datetime.now)
     rating=models.PositiveSmallIntegerField(validators=[MinValueValidator(0),MaxValueValidator(5)])
 

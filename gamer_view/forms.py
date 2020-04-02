@@ -10,6 +10,14 @@ class UserForm(forms.ModelForm):
             }
         )                       
     )
+    email = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs={
+                'style': 'height:22.5px; position:relative; top:-6px; font-size:16px; width:287px'
+            }
+        )
+    )
+
     password = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
@@ -20,20 +28,13 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'password',)
+        fields = ('username', 'email', 'password',)
         help_texts = {
             'username': None,
         }
 
 class UserProfileForm(forms.ModelForm):
-    email = forms.EmailField(
-        widget=forms.EmailInput(
-            attrs={
-                'style': 'height:22.5px; position:relative; top:-6px; font-size:16px; width:287px'
-            }
-        )
-    )
-
+    
     picture = forms.ImageField(
         widget=forms.FileInput(
             attrs={
@@ -44,4 +45,4 @@ class UserProfileForm(forms.ModelForm):
     
     class Meta:
         model = UserProfile
-        fields = ('email', 'picture')
+        fields = ('picture',)

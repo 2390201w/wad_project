@@ -4,7 +4,7 @@ from gamer_view.forms import UserForm, UserProfileForm
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from gamer_view.models import Category, Page
-
+from django.contrib import messages
 
 # Create your views here
 def home(request):
@@ -72,7 +72,7 @@ def register(request):
 
     if request.method == 'POST':
         user_form = UserForm(request.POST)
-        profile_form = UserProfileForm(request.POST)
+        profile_form = UserProfileForm(request.POST,request.FILES)
 
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
@@ -108,15 +108,11 @@ def user_login(request):
         user = authenticate(username=username,password=password)
 
         if user:
-            if user.is_active:
-                login(request,user)
-                return redirect(reverse('gamer_view:home'))
-            else:
-                return HttpResponse('Your gamer_view account is disabled.')
-        
+            login(request,user)
+            return redirect(reverse('gamer_view:home'))
         else:
-            print(f"Invalid login details: {username}, {password}")
-            return HttpResponse("Invalid login details supplied.")
+            messages.error(request, "Username and/or password is incorrect")
+            return redirect(reverse('gamer_view:login'))
 
     else:
         return render(request,'gamer_view/login.html')
