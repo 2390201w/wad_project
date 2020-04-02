@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from gamer_view.forms import UserForm, UserProfileForm
 from django.urls import reverse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from gamer_view.models import Category, Page
 
 
@@ -121,3 +121,7 @@ def user_login(request):
     else:
         return render(request,'gamer_view/login.html')
 
+# @login_required
+def user_logout(request):
+    logout(request)
+    return redirect(reverse('gamer_view:home'))

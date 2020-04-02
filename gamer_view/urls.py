@@ -11,5 +11,6 @@ path('game/<pageName>/', views.show_page, name='show_page'),
 path('trending/', views.trending, name='trending'),
 path('register/',views.register, name='register'),
 path('login/',views.user_login, name='user_login'),
+path('logout/', views.user_logout, name='logout'),
 ]
 
