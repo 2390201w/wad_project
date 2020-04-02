@@ -53,9 +53,10 @@
 }
 
 #additions_game_names {
-  font-size: 20px;
   position: absolute;
   top: 820px;
-  width: 75%;
+  width: 69%;
   left: 15%;
+  font-size: 20px;
+  font-family: "Bahnschrift";
 }

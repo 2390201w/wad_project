@@ -8,13 +8,11 @@ Register
 {% block body_block %}
 	<div class="content_box">
 	  <p>Register to Gamer-View</p>
-	</div>
-	<div id="register_page" class="format_register_input">
 		{% if registered %}
 		<strong>Thank you for registering!</strong>
 		<a href="{% url 'gamer_view:home' %}">Return to the homepage</a><br />
 		{% else %}
-		<form id="user_form" method="post" action="{% url 'gamer_view:register' %}" enctype="multipart/form-data">
+		<form id="register_page" method="post" action="{% url 'gamer_view:register' %}" enctype="multipart/form-data">
 			{% csrf_token %}
 
 			<!-- Display each form -->
@@ -22,7 +20,7 @@ Register
 			{{ profile_form.as_p }}
 
 			<!-- Provide a button to click to submit the form. -->
-			<input type="submit" name="submit" value="Register" class="page_button" style="left:50%; margin-left:-236px" />
+			<input type="submit" name="submit" value="Register" class="page_button" style="align:center; bottom:-186px" />
 		</form>
 		{% endif %}
 	</div>

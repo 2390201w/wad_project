@@ -38,7 +38,7 @@ class UserProfileForm(forms.ModelForm):
     picture = forms.ImageField(
         widget=forms.FileInput(
             attrs={
-                'style': 'height:22.5px; position:relative; top:-6px; font-size:16px;'
+                'style': 'height:22.5px; position:relative; top:-6px; font-size:16px; width:210px'
             }
         )
     )
