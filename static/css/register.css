@@ -1,0 +1,13 @@
+#register_page{
+    position: absolute;
+    top: 180px;
+    left:20%;
+    font-size: 22px;
+    text-align: center;
+    font-family: Bahnschrift;
+    color:white;
+}
+
+#submit_button{
+    left:50%;
+}

@@ -64,7 +64,6 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     # The additional attributes we wish to include.
-    website = models.URLField(blank=True)
     picture = models.ImageField(upload_to='profile_images', blank=True)
 
     def __str__(self):
@@ -75,6 +74,7 @@ class User(models.Model):
     userid=models.CharField(max_length=20,unique=True)
     username=models.CharField(max_length=20)
     password=models.CharField(max_length=20)
+    email=models.EmailField()
 
     def __str__(self):
         return self.user
