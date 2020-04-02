@@ -26,14 +26,14 @@ def add_page(name, cat,date, desc, image,views):
     page.save()
 
 # function that adds users
-def add_user(username, pas):
-    user=User.objects.get_or_create(username=username,password=pas)[0]
+def add_user(username, pas, email):
+    user=User.objects.get_or_create(username=username,password=pas, email=email)[0]
     user.save()
     return user
 
 # function that creates user profiles
-def create_profile(name, image, email):
-    user_prof= UserProfile.objects.get_or_create(user=name, picture=image, email=email)[0]
+def create_profile(name, image):
+    user_prof= UserProfile.objects.get_or_create(user=name, picture=image)[0]
     user_prof.save()
 
 ## function that adds reviews
@@ -87,14 +87,14 @@ def populate():
 
     print("\nAdding Users")
     for user in users:
-        name=add_user(user['username'], user['password'])
-        create_profile(name, user['image'], user['email'])
+        name=add_user(user['username'], user['password'],user['email'])
+        create_profile(name, user['image'])
         print("User:", user['username'])
 
     print("\nAdding Reviews")
     for review in reviews:
         game=Page.objects.get(gamename=review['gamename'])
-        user=User.objects.get(username=review['madeby'])
+        user=UserProfile.objects.get(user__username=review['madeby'])
         add_review(game, review['review'], user, review['date'], review['rating'])
         print("Review for", game, "added")
         

@@ -6,11 +6,17 @@
 {% endblock %}
 
 {% block body_block %}
+	{% for message in messages %}
+		<div class="alert alert-success">
+			<a class="close" href="#" data-dismiss="alert">×</a>
+			{{ message }}
+		</div>
+	{% endfor %}
 	<div class="content_box">
 	  <p>Sign in to Gamer-View</p>
 	</div>
 	<div id="login_page">
-		<form id="login_form" method="POST" action="{% url 'gamer_view:user_login' %}">
+		<form id="login_form" method="post" action="{% url 'gamer_view:login' %}">
 			{% csrf_token %}
 			Username: <input type="text" name="username" maxlength="20" size="50" class="format_login_input" />
 			<br />
