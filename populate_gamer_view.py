@@ -5,7 +5,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE',
 import django
 django.setup()
 
-from gamer_view.models import Category ,Page, UserProfile, User ,Reviews
+from gamer_view.models import Category ,Page, UserProfile, User ,Review
 
 # Cleans the Database
 def clean():
@@ -13,7 +13,7 @@ def clean():
     Page.objects.all().delete()
     UserProfile.objects.all().delete()
     User.objects.all().delete()
-    Reviews.objects.all().delete()
+    Review.objects.all().delete()
 
 # function that adds categories
 def add_cat(name):
@@ -38,7 +38,7 @@ def create_profile(name, image):
 
 ## function that adds reviews
 def add_review(game, review, user, date, rating):
-    rev=Reviews.objects.get_or_create(gamename=game, review=review, madeby=user, datecreated=date, rating=rating)[0]
+    rev=Review.objects.get_or_create(gamename=game, review=review, madeby=user, datecreated=date, rating=rating)[0]
     rev.save()
 
 

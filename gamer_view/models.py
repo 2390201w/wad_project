@@ -43,7 +43,7 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
     
-class Reviews(models.Model):
+class Review(models.Model):
     # Links the review to Page(Game) M:1 
     gamename=models.ForeignKey(Page, on_delete=models.CASCADE)
       
@@ -53,5 +53,4 @@ class Reviews(models.Model):
     rating=models.PositiveSmallIntegerField(validators=[MinValueValidator(0),MaxValueValidator(5)])
 
     def __str__(self):
-        return self.madeby
-    
+        return f"{self.gamename}:{self.madeby}"    

@@ -43,7 +43,7 @@ def show_page(request, game):
 
     try:
         page = Page.objects.get(gamename=game)
-        reviews= Reviews.objects.filter(gamename=page)
+        reviews= Review.objects.filter(gamename=page)
 
         context_dict['page']=page
         context_dict['reviews']=reviews
