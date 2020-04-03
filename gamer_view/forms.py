@@ -49,7 +49,7 @@ class UserProfileForm(forms.ModelForm):
 
 class CategoryForm(forms.ModelForm):
     category=forms.CharField(max_length=30, required=True)
-    slug = forms.CharField(widget=forms.HiddenInput(), required=False)
+
 
 
     class Meta:

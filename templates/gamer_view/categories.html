@@ -1,0 +1,16 @@
+{% extends 'gamer_view/base.html' %}
+{% load static %}
+
+{% block title_block %}
+	Categories
+{% endblock %}
+
+{% block body_block %}
+	{% for cat ,value in categories.items %}
+	<a href={% url 'gamer_view:show_category' cat.category %}>{{ cat.category }}<br>
+		{% for page in value %}
+			<a href={% url 'gamer_view:show_page' cat.category page.gamename %}>{{ page.gamename }}</a>
+			<a href={% url 'gamer_view:show_page' cat.category page.gamename %}><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="Image"></a>
+		{% endfor %}
+	{% endfor %}
+{% endblock %}

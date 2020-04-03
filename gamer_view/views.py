@@ -27,8 +27,8 @@ def show_categories(request):
     cats = Category.objects.all()
     for cat in cats:
         page=list(Page.objects.filter(cat=cat.category).order_by('-date_created')[:3])
-        cat_list[cat.category]=page
-    context_dict['category']=cat_list
+        cat_list[cat]=page
+    context_dict['categories']=cat_list
     return render(request, 'gamer_view/categories.html', context=context_dict)
 
 def show_category(request, category_name):
@@ -148,6 +148,8 @@ def add_category(request):
         else:
             messages.error(request, "Fields must not be empty")
             return redirect(reverse('gamer_view:add_category'))
+    else:
+        print(form.errors)
         
     return render(request, 'gamer_view/add_category.html')
 

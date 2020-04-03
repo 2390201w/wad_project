@@ -21,7 +21,7 @@
 	<div id="game_box" class="home_button">
 		<div id="additions_images">
 		{% for page in pages %}
-			<a href="gamer_view/categories/{{ page.cat }}/{{ page.gamename }}" style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="{{ page.gamename }}++"></a>
+			<a href={% url 'gamer_view:show_page' page.cat page.gamename %} style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="{{ page.gamename }}++"></a>
 		{% endfor %}
 		</div>
 	</div>

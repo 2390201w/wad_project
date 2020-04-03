@@ -15,7 +15,7 @@
 			<div class="game_info">
 				<p>{{ page.gamename }}</p>
 				<div class="page_button">
-					<p>Category: {{ page.cat }}</p>
+					<a href= {% url 'gamer_view:show_category' page.cat %} style="color:white; text-decoration:none"><p>Category: {{ page.cat }}</p></a>
 				</div>
 				<div class="page_button" id="description">
 					<p>Description: {{ page.description }}</p>
