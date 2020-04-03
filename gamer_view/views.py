@@ -13,10 +13,23 @@ def home(request):
 
     context_dict={}
     context_dict['pages']=page_list
+    
     return render(request, 'gamer_view/home.html', context=context_dict)
 
 def about(request):
     return render(request, 'gamer_view/about.html')
+
+#might work unsure
+#displays all the categories
+def show_categories(request):
+    context_dict={}
+    cat_list={}
+    cats = Category.objects.all()
+    for cat in cats:
+        page=list(Page.objects.filter(cat=cat.category).order_by('-date_created')[:3])
+        cat_list[cat.category]=page
+    context_dict['category']=cat_list
+    return render(request, 'gamer_view/categories.html', context=context_dict)
 
 def show_category(request, category_name):
     context_dict={}
@@ -43,7 +56,7 @@ def show_page(request, game):
 
     try:
         page = Page.objects.get(gamename=game)
-        reviews= Review.objects.filter(gamename=page)
+        reviews= list(Review.objects.filter(gamename=page).order_by('datecreated'))
 
         context_dict['page']=page
         context_dict['reviews']=reviews

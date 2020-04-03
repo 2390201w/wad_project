@@ -6,6 +6,7 @@ app_name = 'gamer_view'
 urlpatterns = [
 path('', views.home, name='home'),
 path('about/', views.about, name='about'),
+path('category/', views.show_categories, name ='show_categories'),
 path('category/<category_name>/', views.show_category, name='show_category'),
 path('category/<category_name>/<game>/', views.show_page, name='show_page'),
 path('add_category/', views.add_category, name='add_category'),

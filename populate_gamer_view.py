@@ -69,9 +69,9 @@ def populate():
 
     #list of Reviews
     reviews=[{'gamename': 'Bloons Tower Defense', 'review' : 'A good game for passing time and does not require much attention','madeby':'Sheldon', 'date':'2011-01-30', 'rating': '3'},
-             {'gamename': 'Animal Crossing', 'review' : 'An excellent game for to escape reality','madeby':'Abigail', 'date':'2020-04-01', 'rating': '4'},
+             {'gamename': 'Animal Crossing', 'review' : 'An excellent game to escape reality','madeby':'Abigail', 'date':'2020-04-01', 'rating': '4'},
              {'gamename': 'Monster Hunter', 'review' : 'Never gets boring due to the constant new free DLCs','madeby':'Adam', 'date':'2020-02-18', 'rating': '5'},
-             {'gamename': 'Dark Souls', 'review' : 'Quiet a alot of exploring and has intresting boss fights','madeby':'Sheldon', 'date':'2011-01-30', 'rating': '4'}]
+             {'gamename': 'Dark Souls', 'review' : 'Quiet a lot of exploring and has intresting boss fights','madeby':'Sheldon', 'date':'2011-01-30', 'rating': '4'}]
 
            
     print("Adding Categories")
