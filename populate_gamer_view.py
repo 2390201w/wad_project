@@ -59,7 +59,7 @@ def populate():
             {'gamename': 'DarkSouls', 'category':'Action','date': '2011-12-01','description': "Gather souls",'image': 'game_images/ds.jpg','views':'30'},
             {'gamename': 'TheWitcher3', 'category':'Action','date': '2018-04-23','description': "Story driven",'image': 'game_images/witcher.jfif','views':'40'},
             {'gamename': 'Fifa18', 'category':'Sport','date': '2018-11-29','description': "Play Football",'image': 'game_images/fifa.jpg','views':'8'},
-            {'gamename': 'NBA2K20', 'category':'Sport','date': '2019-12-23','description': "Play Basketball",'image': 'game_images/nba.jpg','views':'24'},
+            {'gamename': 'NBA2K20', 'category':'Sport','date': '2019-12-23','description': "Play Basketball",'image': 'game_images/nba.jfif','views':'24'},
             {'gamename': 'BloonsTowerDefense', 'category':'Strategy','date': '2010-02-26','description': "Pop balloons and defend base",'image': 'game_images/btd.jpg','views':'20'},
             {'gamename': 'Hearthstone', 'category':'Strategy','date': '2016-05-03','description': "Turn based card game",'image': 'game_images/hearthstone.jpg','views':'28'},
             {'gamename': 'WorldOfWarcraft', 'category':'MMORPG','date': '2005-04-10','description': "Go on a legendary adventure",'image': 'game_images/wow.jpg','views':'40'},

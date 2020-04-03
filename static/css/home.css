@@ -46,17 +46,8 @@
 }
 
 #additions_images {
-  position: absolute;
-  top: 640px;
-  width: 80%;
-  left: 11.5%;
-}
-
-#additions_game_names {
-  position: absolute;
-  top: 820px;
-  width: 69%;
-  left: 15%;
-  font-size: 20px;
-  font-family: "Bahnschrift";
+  position: relative;
+  top: 40px;
+  width: 90%;
+  left: 0.5%;
 }

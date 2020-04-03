@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from gamer_view.forms import UserForm, UserProfileForm ,CategoryForm
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
-from gamer_view.models import Category, Page
+from gamer_view.models import Category, Page, Review
 from django.contrib import messages
 
 # Create your views here
@@ -51,7 +51,7 @@ def show_category(request, category_name):
 
     return render(request, 'gamer_view/category.html', context=context_dict)
 
-def show_page(request, game):
+def show_page(request, category_name, game):
     context_dict={}
 
     try:

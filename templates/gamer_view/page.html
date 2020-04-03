@@ -1,0 +1,18 @@
+{% extends 'gamer_view/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    {% if page %}
+        {{ page.gamename }}
+    {% else %}
+        Unknown Game
+    {% endif %}
+{% endblock %}
+
+{% block body_block %}
+    {% if page %}
+        <img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="Image">
+    {% else %}
+        The specified game does not exist.
+    {% endif %}
+{% endblock %}
