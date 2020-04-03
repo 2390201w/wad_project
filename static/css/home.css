@@ -1,4 +1,4 @@
-.page_button {
+.home_button {
   border-radius: 18px;
   border: 2px solid #000000;
   background: #4572C4;
@@ -35,19 +35,10 @@
   left: 22%;
 }
 
-#latest_additions_box {
-  border-radius: 36px;
-  background: #595959;
-  position: absolute;
-  width: 80%;
-  height: 250px;
-  top: 615px;
-  margin-left: 10%;
-}
-
 #additions_images {
   position: relative;
   top: 40px;
   width: 90%;
   left: 0.5%;
+  margin-bottom: 40px;
 }

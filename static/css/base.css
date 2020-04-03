@@ -1,7 +1,6 @@
 body, html {
-  height: 100%;
   margin: 0px;
-  background-image: linear-gradient(rgba(0, 114, 220), rgba(0, 64, 120));
+  background: linear-gradient(rgba(0, 114, 220), rgba(0, 64, 120)) fixed;
 }
 
 #banner {
@@ -45,6 +44,16 @@ body, html {
   position: absolute;
   top: 80px;
   right: 20px;
+}
+
+#game_box {
+  border-radius: 36px;
+  background: #595959;
+  position: absolute;
+  width: 80%;
+  height: auto;
+  top: 615px;
+  margin-left: 10%;
 }
 
 .content_box {

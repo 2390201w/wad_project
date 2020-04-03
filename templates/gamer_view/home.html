@@ -6,21 +6,22 @@
 {% endblock %}
 
 {% block body_block %}
-	<div id="category_button" class="page_button">
+	<div id="category_button" class="home_button">
 	  <p> Categories </p>
-	</div><div id="trending_button" class="page_button">
+	</div>
+	<div id="trending_button" class="home_button">
 	  <p> Trending </p>
 	</div>
-	<div id="about_us_button" class="page_button">
+	<div id="about_us_button" class="home_button">
 	  <a href="{% url 'gamer_view:about' %}" style="color:white; text-decoration:none">About Us</a>
 	</div>
-	<div id="latest_additions" class="page_button">
+	<div id="latest_additions" class="home_button">
 	  <p> Latest Additions </p>
 	</div>
-	<div id="latest_additions_box" class="page_button">
+	<div id="game_box" class="home_button">
 		<div id="additions_images">
 		{% for page in pages %}
-			<a href="{{ page.url }}" style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="Title"></a>
+			<a href="gamer_view/categories/{{ page.cat }}/{{ page.gamename }}" style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="{{ page.gamename }}++"></a>
 		{% endfor %}
 		</div>
 	</div>

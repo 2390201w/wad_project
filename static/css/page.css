@@ -1,0 +1,63 @@
+#page_box {
+  text-align: left;
+  border-radius: 36px;
+  position: absolute;
+  width: 70%;
+  height: auto;
+  left: 15%
+}
+
+#game_image {
+  height:370px;
+  width:585px;
+  color:black;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+
+.game_info {
+  height: 620px;
+  width: 50%;
+  text-align: center;
+}
+
+.page_button {
+  border-radius: 15px;
+  border: 2px solid #000000;
+  background: #4572C4;
+  position: absolute;
+  width: 80%;
+  height: 80px;
+  text-align: center;
+  position: relative;
+  left: 50%;
+  margin-left: -40%;
+  margin-top: 40px;
+  color: white;
+  font-size: 40px;
+  top: -10px;
+  font-family: "Bahnschrift";
+  -webkit-text-stroke: 0px;
+}
+
+#description {
+	padding-left: 2%;
+	padding-right: 2%;
+	width: 76%;
+	height: 175px;
+	line-height: 18px;
+	top: -20px;
+	text-align: left;
+	font-size: 16px;
+}
+
+.bar {
+  height: 390px;
+  width: 5px;
+  background-color: #4572C4;
+  position: relative;
+  left: 50%;
+  margin-top: -645px;
+  margin-bottom: 30px;
+}

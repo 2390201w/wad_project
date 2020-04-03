@@ -10,9 +10,21 @@
 {% endblock %}
 
 {% block body_block %}
-    {% if page %}
-        <img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="Image">
-    {% else %}
-        The specified game does not exist.
-    {% endif %}
+	<div class="content_box" id="page_box">
+		{% if page %}
+			<div class="game_info">
+				<p>{{ page.gamename }}</p>
+				<div class="page_button">
+					<p>Category: {{ page.cat }}</p>
+				</div>
+				<div class="page_button" id="description">
+					<p>Description: {{ page.description }}</p>
+				</div>
+			</div>
+			<div class="bar"></div>
+			<img src="{{ page.image.url }}" id="game_image" border="2" alt="{{ page.gamename }}">
+		{% else %}
+			The specified game does not exist.
+		{% endif %}
+	</div>
 {% endblock %}
