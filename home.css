@@ -1,0 +1,96 @@
+.page_button {
+  border-radius: 18px;
+  border: 2px solid #000000;
+  background: #4572C4;
+  position: absolute;
+  width: 280px;
+  height: 100px;
+  margin-left:-140px;
+  text-align: center;
+  line-height: 105px;
+  color: white;
+  font-size: 40px;
+  font-family: "Bahnschrift";
+}
+
+
+.search {
+  background: rgba(255, 255, 255, 0);
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 6rem;
+  text-align: center;
+  font-size: 1.6rem;
+  }
+.search:empty:before {
+  content: attr(placeholder);
+  color: #bbb;
+
+}
+  .search-text {
+  width: 80%;
+  text-align: center;
+  border: none;
+  outline: none;
+  background: #F4F4F4;
+  }
+   
+  .search-cancel {
+  position: absolute;
+  width: 10%;
+  height: 3rem;
+  line-height: 3rem;
+  color: #929292;
+  top: 1.2rem;
+  right: 1rem;
+  }
+
+
+#category_button {
+  top: 240px;
+  left: 22%;
+}
+
+#trending_button {
+  top: 240px;
+  left: 50%;
+}
+
+#about_us_button {
+  top: 240px;
+  left: 78%;
+}
+
+#latest_additions {
+  font-size: 34px;
+  line-height: 5px;
+  top: 550px;
+  left: 22%;
+}
+
+#latest_additions_box {
+  border-radius: 36px;
+  background: #595959;
+  position: absolute;
+  width: 80%;
+  height: 250px;
+  top: 615px;
+  margin-left: 10%;
+}
+
+#additions_images {
+  position: absolute;
+  top: 640px;
+  width: 80%;
+  left: 11.5%;
+}
+
+#additions_game_names {
+  position: absolute;
+  top: 820px;
+  width: 69%;
+  left: 15%;
+  font-size: 20px;
+  font-family: "Bahnschrift";
+}
