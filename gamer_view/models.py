@@ -2,18 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db.models import Avg
-from django.template.defaultfilters import slugify
 from datetime import datetime
 
 # Create your models here.
 class Category(models.Model):
     category=models.CharField(max_length=30, primary_key=True)
-    slug=models.SlugField()
-
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.category)
-        super(Category, self).save(*args, **kwargs)
-
     class Meta:
         verbose_name_plural= 'Categories'
 

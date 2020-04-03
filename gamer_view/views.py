@@ -18,32 +18,32 @@ def home(request):
 def about(request):
     return render(request, 'gamer_view/about.html')
 
-def show_category(request, category_name_slug):
+def show_category(request, category_name):
     context_dict={}
 
     try:
         #Gets the category
-        category = Category.objects.get(slug=category_name_slug)
+        category = Category.objects.get(category=category_name)
 
         
         #Get the related pages
-        pages=Page.objects.filter(category=category)
+        pages=Page.objects.filter(cat=category)
 
         context_dict['pages']=pages
-        context_dict['category']=category
+        context_dict['cat']=category
 
     except Category.DoesNotExist:
-        context_dict['category'] =None
+        context_dict['cat'] =None
         context_dict['pages']=None
 
     return render(request, 'gamer_view/category.html', context=context_dict)
 
-def show_page(request, pageName):
+def show_page(request, game):
     context_dict={}
 
     try:
-        page = Page.objects.get(pageName=gamename)
-        reviews= Reviews.objects.filter(gamename=gamename)
+        page = Page.objects.get(gamename=game)
+        reviews= Reviews.objects.filter(gamename=page)
 
         context_dict['page']=page
         context_dict['reviews']=reviews
