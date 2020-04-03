@@ -1,0 +1,25 @@
+{% extends 'gamer_view/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    {% if cat %}
+        {{ cat.category }}
+    {% else %}
+        Unknown Category
+    {% endif %}
+{% endblock %}
+
+{% block body_block %}
+	{% if cat %}
+		<h1>{{ cat.category }}</h1>
+			{% if pages %}
+				{% for page in pages %}
+					<a href="/gamer_view/category/{{ cat.category }}/{{ page.gamename }}/">{{ page.gamename }}</a>
+					<a href="/gamer_view/category/{{ cat.category }}/{{ page.gamename }}/"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="Image"></a>
+				{% endfor %}
+			{% endif %}
+		{% else %}
+			 The specified Category does not exist.
+    {% endif %}
+{% endblock %}
+		
