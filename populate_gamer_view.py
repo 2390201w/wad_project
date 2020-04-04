@@ -76,8 +76,12 @@ def populate():
     #list of Reviews
     reviews=[{'gamename': 'BloonsTowerDefense', 'review' : 'A good game for passing time and does not require much attention','madeby':'Sheldon', 'date':'2011-01-30', 'rating': '3'},
              {'gamename': 'AnimalCrossing', 'review' : 'An excellent game to escape reality','madeby':'Abigail', 'date':'2020-04-01', 'rating': '4'},
+             {'gamename': 'AnimalCrossing', 'review' : 'Many adorable character','madeby':'Katy', 'date':'2020-04-02', 'rating': '5'},
+             {'gamename': 'AnimalCrossing', 'review' : 'A chill game','madeby':'Ben', 'date':'2020-04-02', 'rating': '3'},
              {'gamename': 'MonsterHunter', 'review' : 'Never gets boring due to the constant new free DLCs','madeby':'Adam', 'date':'2020-02-18', 'rating': '5'},
-             {'gamename': 'DarkSouls', 'review' : 'Quiet a lot of exploring and has intresting boss fights','madeby':'Sheldon', 'date':'2011-01-30', 'rating': '4'}]
+             {'gamename': 'MonsterHunter', 'review' : 'I love the character customisation and the armour designs','madeby':'Ben', 'date':'2020-03-10', 'rating': '4'},
+             {'gamename': 'DarkSouls', 'review' : 'Quiet a lot of exploring and has intresting boss fights','madeby':'Sheldon', 'date':'2011-01-30', 'rating': '4'},
+             {'gamename': 'TheWitcher3', 'review' : 'Story was well executed','madeby':'Sheldon', 'date':'2019-08-12', 'rating': '4'},]
 
            
     print("Adding Categories")

@@ -4,8 +4,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db.models import Avg
 from datetime import datetime
 
-# Create your models here.
 class Category(models.Model):
+    
     category=models.CharField(max_length=30, primary_key=True)
     class Meta:
         verbose_name_plural= 'Categories'
@@ -18,12 +18,7 @@ class Page(models.Model):
 
     # links the page to category M:1
     cat= models.ForeignKey(Category, on_delete=models.CASCADE)
-					   
-					   
-    # This is average rating.
-    # wont work cos reviews is not created before page
-   # average_rating=Reviews.objects.values('gamename').annotate(Avg('rating'))
-					   			   
+					   		   
     date_created=models.DateField(default= datetime.now)
     description=models.CharField(max_length=500)
     image = models.ImageField(upload_to='game_images', blank=True)
@@ -54,3 +49,4 @@ class Review(models.Model):
 
     def __str__(self):
         return f"{self.gamename}:{self.madeby}"    
+

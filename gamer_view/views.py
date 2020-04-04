@@ -5,6 +5,8 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from gamer_view.models import Category, Page, Review ,User, UserProfile
 from django.contrib import messages
+from django.db.models import Avg, IntegerField
+
 
 # Create your views here
 def home(request):
@@ -13,13 +15,13 @@ def home(request):
 
     context_dict={}
     context_dict['pages']=page_list
-    
+
     return render(request, 'gamer_view/home.html', context=context_dict)
 
 def about(request):
     return render(request, 'gamer_view/about.html')
 
-#might work unsure
+
 #displays all the categories
 def show_categories(request):
     context_dict={}
@@ -57,20 +59,31 @@ def show_page(request, category_name, game):
     try:
         page = Page.objects.get(gamename=game)
         reviews= list(Review.objects.filter(gamename=page).order_by('datecreated'))
+        rating=getAverage(page)
 
         context_dict['page']=page
         context_dict['reviews']=reviews
+        context_dict['rating']=rating
 
     except Page.DoesNotExist:
         context_dict['page']=None
         context_dict['reviews']=None
+        context_dict['rating']=None
 
     return render(request, 'gamer_view/page.html', context=context_dict)
 
 def trending(request):
-    # Get the top rated pages
-    top_rated_pages= Page.object.order_by('-rate')[:5]
 
+    page_list= Page.object.all()
+    for game in page_list:
+        avg[game]=getAverage(game)
+
+    # removes pages that do not have reviews
+    newavg=removeNull(avgs)
+
+    # Gets the top 5 rated
+    top_rated_pages=sorted(newavg, key=newavg.get, reverse=True)[:5]
+    
     #Get the most viewed pages
     most_viewed=Page.object.order_by('-view')[:5]
 
@@ -167,10 +180,19 @@ def add_page(request):
     return render(request, 'gamer_view/add_page.html')
         
 def myAccount(request):
+    
     user= UserProfile.objects.get(user=request.user)
     Reviews= Review.objects.filter(madeby=user)
     
-
-
-
     return render(request, 'gamer_view/myAccount.html', context={'myReviews':Reviews})
+
+
+# finds the average rating of the page and returns the integer
+def getAverage(game):
+    avg= Review.objects.filter(gamename=game).aggregate(Avg('rating', output_field=IntegerField()))
+    average=avg['rating__avg']
+    return average
+
+# removes dictionary with null values
+def removeNull(games):
+    return{k:v for k, v in games.items() if v is not None}    
