@@ -27,7 +27,8 @@ def add_page(name, cat,date, desc, image,views):
 
 # function that adds users
 def add_user(username, pas, email):
-    user=User.objects.get_or_create(username=username,password=pas, email=email)[0]
+    user=User.objects.get_or_create(username=username, email=email)[0]
+    user.set_password(pas)
     user.save()
     return user
 

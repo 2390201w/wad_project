@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from gamer_view.forms import UserForm, UserProfileForm ,CategoryForm
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
-from gamer_view.models import Category, Page, Review
+from gamer_view.models import Category, Page, Review ,User, UserProfile
 from django.contrib import messages
 
 # Create your views here
@@ -167,19 +167,10 @@ def add_page(request):
     return render(request, 'gamer_view/add_page.html')
         
 def myAccount(request):
-    username = request.user.username
-    Reviews= list(Review.objects.all())
-    myReview=None
-    hasReview=False
+    user= UserProfile.objects.get(user=request.user)
+    Reviews= Review.objects.filter(madeby=user)
     
-    for i in Reviews:
-        print("_+_+_++_+_+_+__++_+")
-        if i.madeby.user.username == username:
-            myReview = i.gamename
-            hasReview = True
-        else:
-            myReview = None
-            hasReview = False
 
-    return render(request, 'gamer_view/myAccount.html', context={'myReviews':myReview,
-                                                                'hasReview':hasReview,})
+
+
+    return render(request, 'gamer_view/myAccount.html', context={'myReviews':Reviews})

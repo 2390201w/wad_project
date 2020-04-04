@@ -7,30 +7,31 @@
 
 {% block body_block %}
 	<div class="content_box">
-	  <p>My Review</p>
+	  <p>My Reviews</p>
 	</div>
 	<div id="content_text">
-	  <p>
-          {% if hasReview %}
-             Game Name: {{ myReviews }}
-          {% else %}
-             You dont have any reviews yet.
-             <div class="Add_buttons">
-               <p>
-                <a href="">Add Review</a>
-               </p>
-             </div>
-             <div class="Add_buttons">
-               <p>
-                <a href="">Add Category</a>
-               </p>
-             </div>
-             <div class="Add_buttons">
-               <p>
-                <a href="">Add Game</a>
-               </p>
-             </div>
-          {% endif %}
-	  </p>
+	<p>
+		{% if myReviews %}
+			<p> Game Name: </p>
+			{% for review in myReviews %}
+				<a href={% url 'gamer_view:show_page' review.gamename.cat review.gamename %}>{{ review.gamename }}</a><br>
+			{% endfor %}
+		{% endif %}
+		<div class="Add_buttons">
+			<p>
+				<a href="">Add Review</a>
+			</p>
+		</div>
+		<div class="Add_buttons">
+			<p>
+				<a href="">Add Category</a>
+			</p>
+		</div>
+		<div class="Add_buttons">
+			<p>
+				<a href="">Add Game</a>
+			</p>
+		</div>
+	</p>
 	</div>
 {% endblock %}

@@ -45,10 +45,10 @@ class UserProfile(models.Model):
     
 class Review(models.Model):
     # Links the review to Page(Game) M:1 
-    gamename=models.ForeignKey(Page, on_delete=models.CASCADE)
+    gamename=models.ForeignKey(Page, on_delete=models.CASCADE, null=True)
       
     review=models.CharField(max_length=500)
-    madeby=models.ForeignKey(UserProfile,on_delete=models.CASCADE, null=True)
+    madeby=models.ForeignKey(UserProfile,on_delete=models.CASCADE , null=True)
     datecreated=models.DateField(default=datetime.now)
     rating=models.PositiveSmallIntegerField(validators=[MinValueValidator(0),MaxValueValidator(5)])
 
