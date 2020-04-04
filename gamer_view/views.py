@@ -160,12 +160,10 @@ def add_category(request):
 
         if form.is_valid():
             form.save(commit=True)
-            return redirect('/gamer_view/category.html')
+            return redirect('gamer_view:show_categories')
         else:
-            messages.error(request, "Fields must not be empty")
+            messages.error(request, "Field must not be empty")
             return redirect(reverse('gamer_view:add_category'))
-    else:
-        print(form.errors)
         
     return render(request, 'gamer_view/add_category.html')
 
