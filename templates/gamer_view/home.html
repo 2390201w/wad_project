@@ -6,22 +6,22 @@
 {% endblock %}
 
 {% block body_block %}
-	<div id="category_button" class="home_button">
+	<div id="category_button" class="button">
 	  <a href="{% url 'gamer_view:show_categories' %}" style="color:white; text-decoration:none"> Categories </a>
 	</div>
-	<div id="trending_button" class="home_button">
+	<div id="trending_button" class="button">
 	  <a href="{% url 'gamer_view:trending' %}" style="color:white; text-decoration:none"> Trending </a>
 	</div>
-	<div id="about_us_button" class="home_button">
+	<div id="about_us_button" class="button">
 	  <a href="{% url 'gamer_view:about' %}" style="color:white; text-decoration:none">About Us</a>
 	</div>
-	<div id="latest_additions" class="home_button">
+	<div id="latest_additions" class="button">
 	  <p> Latest Additions </p>
 	</div>
-	<div id="game_box" class="home_button">
+	<div id="game_box" class="button">
 		<div id="additions_images">
 		{% for page in pages %}
-			<a href={% url 'gamer_view:show_page' page.cat page.gamename %} style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="{{ page.gamename }}++"></a>
+			<a href={% url 'gamer_view:show_page' page.cat page.gamename %} style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="{{ page.gamename }}"></a>
 		{% endfor %}
 		</div>
 	</div>
