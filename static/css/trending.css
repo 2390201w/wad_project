@@ -1,0 +1,41 @@
+#trending_type {
+  z-index: -2;
+  font-size: 34px;
+  position: relative;
+  margin-left: 5%;
+}
+
+#trending_box {
+  z-index: -1;
+  border-radius: 36px;
+  border: 2px solid #000000;
+  background: #595959;
+  position: relative;
+  width: 323%;
+  height: 1043px;
+  margin-left: -34%;
+}
+
+#trending_images {
+  position: relative;
+  width: 10%;
+  line-height: 125px;
+  top: 10px;
+  color: black;
+}
+
+#trending_description {
+  padding: 2%;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  width: 300%;
+  height: 157.5px;
+  line-height: 18.5px;
+  text-align: left;
+  font-size: 16px;
+  margin-bottom:-231px;
+  
+  position: relative;
+  top: -274px;
+  left: 210%;
+}

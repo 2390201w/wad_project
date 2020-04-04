@@ -6,12 +6,29 @@
 {% endblock %}
 
 {% block body_block %}
-	<p> Top-Rated </p>
-	{% for page in top_rate_pages %}
-		<a href={% url 'gamer_view:show_page' page.cat page.gamename %} style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="{{ page.gamename }}"></a>
-	{% endfor %}
-	<p> Most Viewed </p>
-	{% for page in most_viewed %}
-		<a href={% url 'gamer_view:show_page' page.cat page.gamename %} style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="{{ page.gamename }}"></a>
-	{% endfor %}
+	<div id="content_area" style="width:97.5%; left:1.25%; max-height: 1117px">
+		<div id="trending_type" class="button">
+			<p style="line-height:0px"> Top-Rated </p>
+			<P id="trending_box"></p>
+		</div>
+		<div id="trending_images">
+		{% for page in top_rate_pages %}
+			<p><a href={% url 'gamer_view:show_page' page.cat page.gamename %} style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:18%; color:black; margin-top:-70px" border="2" alt="{{ page.gamename }}"></a>
+			<div class="page_button" id="trending_description">Description: {{ page.description }}</div>
+			</p>
+		{% endfor %}
+		</div>
+			
+		<div id="trending_type" class="button" style="left:51.1%; top: -1174px">
+			<p style="line-height:0px"> Most Viewed </p>
+			<P id="trending_box"></p>
+		</div>
+		<div id="trending_images" style="left:51.1%; top: -1164px;">
+		{% for page in most_viewed %}
+			<p><a href={% url 'gamer_view:show_page' page.cat page.gamename %} style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:18%; color:black; margin-top:-70px" border="2" alt="{{ page.gamename }}"></a>
+			<div class="page_button" id="trending_description">Description: {{ page.description }}</div>
+			</p>
+		{% endfor %}
+		</div>
+	</div>
 {% endblock %}
