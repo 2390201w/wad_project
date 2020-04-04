@@ -6,11 +6,15 @@
 {% endblock %}
 
 {% block body_block %}
-	{% for cat ,value in categories.items %}
-	<a href={% url 'gamer_view:show_category' cat.category %}>{{ cat.category }}<br>
-		{% for page in value %}
-			<a href={% url 'gamer_view:show_page' cat.category page.gamename %}>{{ page.gamename }}</a>
-			<a href={% url 'gamer_view:show_page' cat.category page.gamename %}><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="Image"></a>
+	<div id="content_area">
+		{% for cat ,value in categories.items %}
+			<div id="category_name" class="button">
+				<a href={% url 'gamer_view:show_category' cat.category %} style="color:white; text-decoration:none">{{ cat.category }}<br>
+				<P id="categories_box"></p>
+			</div>
+			{% for page in value %}
+				<a href={% url 'gamer_view:show_page' cat.category page.gamename %}><img src="{{ page.image.url }}" id="format_image" border="2" alt="Image"></a>
+			{% endfor %}
 		{% endfor %}
-	{% endfor %}
+	</div>
 {% endblock %}

@@ -1,0 +1,44 @@
+#content_area {
+  z-index: -2;
+  width: 80%;
+  height: auto;
+  font-size: 60px;
+  text-align: left;
+  color: white;
+  font-family: "Bahnschrift";
+  line-height: 230px;
+  
+  position: absolute;
+  top: 200px;
+  left: 10%;
+}
+
+#category_name {
+  z-index: -3;
+  font-size: 34px;
+  position: relative;
+  margin-left: 6%;
+  line-height: 210%;
+}
+
+#categories_box {
+  z-index: -1;
+  border-radius: 36px;
+  border: 2px solid #000000;
+  background: #595959;
+  position: absolute;
+  width: 542.5%;
+  height: 247px;
+  top: 30px;
+  margin-left: -33.5%;
+}
+
+#format_image {
+position: relative;
+height: 165px;
+width: 280px;
+left: 5%;
+margin-left: 8%;
+top: 3px;
+color: black
+}

@@ -10,16 +10,17 @@
 {% endblock %}
 
 {% block body_block %}
+	<div class="content_box" id="category_box">
 	{% if cat %}
-		<h1>{{ cat.category }}</h1>
+		<p>{{ cat.category }}</p>
 			{% if pages %}
 				{% for page in pages %}
-					<a href={% url 'gamer_view:show_page' cat.category page.gamename %}>{{ page.gamename }}</a>
 					<a href={% url 'gamer_view:show_page' cat.category page.gamename %}><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="Image"></a>
 				{% endfor %}
 			{% endif %}
 		{% else %}
 			 The specified Category does not exist.
     {% endif %}
+	</div>
 {% endblock %}
 		

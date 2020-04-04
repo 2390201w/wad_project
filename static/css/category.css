@@ -1,0 +1,9 @@
+#category_box {
+  text-align: center;
+  border-radius: 36px;
+  border: 2px solid #000000;
+  position: absolute;
+  width: 70%;
+  height: auto;
+  left: 15%
+}

@@ -1,11 +1,13 @@
 body, html {
   margin: 0px;
-  background: linear-gradient(rgba(0, 114, 220), rgba(0, 64, 120)) fixed;
+  background: linear-gradient(rgba(35, 115, 222), rgba(0, 59, 110)) fixed;
 }
 
 #banner {
   height: 150px;
+  width: auto;
   background-color: #595959;
+  border-bottom: 2px solid #000000;
 }
 
 #icon {
