@@ -1,0 +1,36 @@
+{% extends 'gamer_view/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    myAccount
+{% endblock %}
+
+{% block body_block %}
+	<div class="content_box">
+	  <p>My Review</p>
+	</div>
+	<div id="content_text">
+	  <p>
+          {% if hasReview %}
+             Game Name: {{ myReviews }}
+          {% else %}
+             You dont have any reviews yet.
+             <div class="Add_buttons">
+               <p>
+                <a href="">Add Review</a>
+               </p>
+             </div>
+             <div class="Add_buttons">
+               <p>
+                <a href="">Add Category</a>
+               </p>
+             </div>
+             <div class="Add_buttons">
+               <p>
+                <a href="">Add Game</a>
+               </p>
+             </div>
+          {% endif %}
+	  </p>
+	</div>
+{% endblock %}

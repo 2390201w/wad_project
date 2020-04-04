@@ -166,6 +166,20 @@ def add_page(request):
 
     return render(request, 'gamer_view/add_page.html')
         
-            
-            
-                
+def myAccount(request):
+    username = request.user.username
+    Reviews= list(Review.objects.all())
+    myReview=None
+    hasReview=False
+    
+    for i in Reviews:
+        print("_+_+_++_+_+_+__++_+")
+        if i.madeby.user.username == username:
+            myReview = i.gamename
+            hasReview = True
+        else:
+            myReview = None
+            hasReview = False
+
+    return render(request, 'gamer_view/myAccount.html', context={'myReviews':myReview,
+                                                                'hasReview':hasReview,})

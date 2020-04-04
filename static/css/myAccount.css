@@ -1,0 +1,17 @@
+.Add_buttons {
+    border-radius: 10px;
+    border: 2px solid #000000;
+    background: #4572C4;
+    width: 300px;
+    height: 50px;
+    text-align: center;
+    line-height: 0px;
+    color: white;
+    font-size: 28px;
+    font-family: "Bahnschrift";
+  }
+
+#Add_Review{
+    position: absolute;
+    right:50%;
+}
