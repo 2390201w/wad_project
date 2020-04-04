@@ -51,7 +51,8 @@ def populate():
 
     #list of Games
     games= [{'gamename': 'CallOfDuty', 'category':'FPS','date': '2018-07-10','description': "shoot people",'image': 'game_images/cod.jfif','views':'5'},
-            {'gamename': 'BattleField', 'category':'FPS','date': '2019-09-29','description': "shoot people 2",'image': 'game_images/bat.jpg','views':'10'},
+            {'gamename': 'RainbowSixSiege', 'category':'FPS','date': '2015-04-07','description': "tactically shoot people",'image': 'game_images/R6.png','views':'10'},
+            {'gamename': 'BattleField', 'category':'FPS','date': '2019-09-29','description': "shoot people 2",'image': 'game_images/bat.jpg','views':'12'},
             {'gamename': 'CSGO', 'category':'FPS','date': '2014-02-03','description': "shoot people 3",'image': 'game_images/csgo.jfif','views':'18'},
             {'gamename': 'LeagueOfLegends', 'category':'MOBA','date': '2012-03-20','description': "destroy towers",'image': 'game_images/lol.jpg','views':'50'},
             {'gamename': 'Dota2', 'category':'MOBA','date': '2015-05-06','description': "destroy towers 2",'image': 'game_images/dota.jpg','views':'35'},
