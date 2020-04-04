@@ -1,0 +1,17 @@
+{% extends 'gamer_view/base.html' %}
+{% load static %}
+
+{% block title_block %}
+	Trending
+{% endblock %}
+
+{% block body_block %}
+	<p> Top-Rated </p>
+	{% for page in top_rate_pages %}
+		<a href={% url 'gamer_view:show_page' page.cat page.gamename %} style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="{{ page.gamename }}"></a>
+	{% endfor %}
+	<p> Most Viewed </p>
+	{% for page in most_viewed %}
+		<a href={% url 'gamer_view:show_page' page.cat page.gamename %} style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="{{ page.gamename }}"></a>
+	{% endfor %}
+{% endblock %}

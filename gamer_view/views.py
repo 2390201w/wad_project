@@ -73,19 +73,22 @@ def show_page(request, category_name, game):
     return render(request, 'gamer_view/page.html', context=context_dict)
 
 def trending(request):
-
-    page_list= Page.object.all()
+    context_dict={}
+    avg={}
+    
+    page_list= Page.objects.all()
+    
     for game in page_list:
         avg[game]=getAverage(game)
 
     # removes pages that do not have reviews
-    newavg=removeNull(avgs)
+    newavg=removeNull(avg)
 
     # Gets the top 5 rated
     top_rated_pages=sorted(newavg, key=newavg.get, reverse=True)[:5]
     
     #Get the most viewed pages
-    most_viewed=Page.object.order_by('-view')[:5]
+    most_viewed=Page.objects.order_by('-views')[:5]
 
     context_dict['top_rate_pages']=top_rated_pages
     context_dict['most_viewed']=most_viewed
