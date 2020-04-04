@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from gamer_view.forms import UserForm, UserProfileForm ,CategoryForm
+from gamer_view.forms import UserForm, UserProfileForm ,CategoryForm, PageForm
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from gamer_view.models import Category, Page, Review ,User, UserProfile
@@ -102,7 +102,6 @@ def register(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST)
         profile_form = UserProfileForm(request.POST,request.FILES)
-
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
 
@@ -168,17 +167,24 @@ def add_category(request):
     return render(request, 'gamer_view/add_category.html')
 
 def add_page(request):
-    form = PageForm()
     if request.method =='POST':
-        form = PageForm(request.POST)
+        form = PageForm(request.POST, request.FILES)
         if form.is_valid():
-            page= form.save(commit=True)
-            return redirect('/gamer_view/page.html')
+            page= form.save(commit=False)
+            
+            if 'image' in request.FILES:
+                page.image = request.FILES['image']
+                
+            page.save()
+            
+            return redirect('gamer_view:show_page', page.cat, page.gamename)
         else:
             messages.error(request, "Fields must not be empty")
             return redirect(reverse('gamer_view:add_page'))
+    else:
+        form=PageForm()
 
-    return render(request, 'gamer_view/add_page.html')
+    return render(request, 'gamer_view/add_page.html', context={'form' :form} )
         
 def myAccount(request):
     
