@@ -27,11 +27,11 @@
         </div>
 		<div id="banner"></div>
 		<div id="icon">
-		  <a href="/">
+		  <a href="{% url 'gamer_view:home' %}">
 		  <img src={% static 'images/controller.png' %} alt="Controller" style="width:150px">
 		</div>
 		<div id="title">
-		  <a href="/">
+		  <a href="{% url 'gamer_view:home' %}">
 			<img src={% static 'images/title.png' %} alt="Title">
 		  </a>
 		</div>
@@ -40,14 +40,14 @@
 
 		<div id="banner_button_1" class="banner_button">
 			<p>
-				<a href="{% url 'gamer_view:myAccount' %}">
+				<a href="{% url 'gamer_view:myAccount' %}"  style="color:white; text-decoration:none">
 					{{ user }}
 				</a>
 			</p>
 		</div>
 		<div id="banner_button_2" class="banner_button">
 			<p>
-				<a href="{% url 'gamer_view:logout' %}">
+				<a href="{% url 'gamer_view:logout' %}"  style="color:white; text-decoration:none">
 					Logout
 				</a>
 			</p>
