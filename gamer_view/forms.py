@@ -57,11 +57,17 @@ class CategoryForm(forms.ModelForm):
 
 
 class PageForm(forms.ModelForm):
-    gamename= forms.CharField(max_length=30, required=True)
-    image= forms.ImageField(widget=forms.FileInput(),required=True)
-    views=forms.IntegerField(widget=forms.HiddenInput(), initial=0)
-    cat=forms.ModelChoiceField(queryset=Category.objects.all(), required=True)
-    
+    gamename= forms.CharField(max_length=30, label="Game Name", required=True)
+    cat=forms.ModelChoiceField(queryset=Category.objects.all(),label="Category", required=True)
+    description=forms.CharField(max_length=500, required=True)
+    image= forms.ImageField(
+        widget=forms.FileInput(
+            attrs={
+                'style': 'height:22.5px; position:relative; top:-6px; font-size:16px; width:210px'
+            }
+        ),required=True)
+    views=forms.IntegerField(widget=forms.HiddenInput(), initial=1)
+        
     class Meta:
         model =Page
-        fields=('gamename', 'image', 'views', 'cat',)
+        fields=('gamename','cat','description', 'image', 'views',)
