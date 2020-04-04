@@ -48,9 +48,8 @@ class UserProfileForm(forms.ModelForm):
         fields = ('picture',)
 
 class CategoryForm(forms.ModelForm):
+    
     category=forms.CharField(max_length=30, required=True)
-
-
 
     class Meta:
         model =Category
@@ -58,10 +57,10 @@ class CategoryForm(forms.ModelForm):
 
 
 class PageForm(forms.ModelForm):
-    gamename= forms.CharField(max_length=30)
-    image= forms.ImageField(widget=forms.FileInput())
+    gamename= forms.CharField(max_length=30, required=True)
+    image= forms.ImageField(widget=forms.FileInput(),required=True)
     views=forms.IntegerField(widget=forms.HiddenInput(), initial=0)
-    cat=forms.ModelChoiceField(queryset=Category.objects.all())
+    cat=forms.ModelChoiceField(queryset=Category.objects.all(), required=True)
     
     class Meta:
         model =Page
