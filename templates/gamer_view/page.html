@@ -24,7 +24,9 @@
 			<div class="bar"></div>
 			<img src="{{ page.image.url }}" id="game_image" border="2" alt="{{ page.gamename }}">
 		{% else %}
-			The specified game does not exist.
+			<div style="text-align: center; padding:60px">
+				The specified game does not exist.
+			</div>
 		{% endif %}
 	</div>
 {% endblock %}
