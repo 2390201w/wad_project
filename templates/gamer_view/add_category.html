@@ -8,7 +8,7 @@
 {% block body_block %}
     <div class="content_box">
 		{% for mess in messages %}
-			{{ mess }}
+			<p>{{ mess }}</p>
 		{% endfor %}
 		<form id="category_form" method="post" action="{% url 'gamer_view:add_category' %}">
 			{% csrf_token %}

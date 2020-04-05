@@ -13,7 +13,7 @@
 		</div>
 		<div id="trending_images">
 		{% for page in top_rate_pages %}
-			<p><a href={% url 'gamer_view:show_page' page.cat page.gamename %} style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:18%; color:black; margin-top:-70px" border="2" alt="{{ page.gamename }}"></a>
+			<p><a href={% url 'gamer_view:show_page' page.cat page.slug %} style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:18%; color:black; margin-top:-70px" border="2" alt="{{ page.gamename }}"></a>
 			<div class="page_button" id="trending_description">Description: {{ page.description }}</div>
 			</p>
 		{% endfor %}
@@ -25,7 +25,7 @@
 		</div>
 		<div id="trending_images" style="left:51.1%; top: -1164px;">
 		{% for page in most_viewed %}
-			<p><a href={% url 'gamer_view:show_page' page.cat page.gamename %} style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:18%; color:black; margin-top:-70px" border="2" alt="{{ page.gamename }}"></a>
+			<p><a href={% url 'gamer_view:show_page' page.cat page.slug %} style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:18%; color:black; margin-top:-70px" border="2" alt="{{ page.gamename }}"></a>
 			<div class="page_button" id="trending_description">Description: {{ page.description }}</div>
 			</p>
 		{% endfor %}

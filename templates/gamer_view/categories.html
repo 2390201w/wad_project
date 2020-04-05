@@ -13,7 +13,7 @@
 				<P id="categories_box"></p>
 			</div>
 			{% for page in value %}
-				<a href={% url 'gamer_view:show_page' cat.category page.gamename %}><img src="{{ page.image.url }}" id="format_image" border="2" alt="Image"></a>
+				<a href={% url 'gamer_view:show_page' cat.category page.slug %}><img src="{{ page.image.url }}" id="format_image" border="2" alt="Image"></a>
 			{% endfor %}
 		{% endfor %}
 	<br><br>

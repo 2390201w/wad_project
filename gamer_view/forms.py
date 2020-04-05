@@ -58,6 +58,7 @@ class CategoryForm(forms.ModelForm):
 
 class PageForm(forms.ModelForm):
     gamename= forms.CharField(max_length=30, label="Game Name", required=True)
+    slug= forms.CharField(widget=forms.HiddenInput(), required=False)
     cat=forms.ModelChoiceField(queryset=Category.objects.all(),label="Category", required=True)
     description=forms.CharField(max_length=500, required=True)
     image= forms.ImageField(

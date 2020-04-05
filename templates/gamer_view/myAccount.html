@@ -14,7 +14,7 @@
 		{% if myReviews %}
 			<p> Game Name: </p>
 			{% for review in myReviews %}
-				<a href={% url 'gamer_view:show_page' review.gamename.cat review.gamename %}>{{ review.gamename }}</a><br>
+				<a href={% url 'gamer_view:show_page' review.gamename.cat review.gamename.slug %}>{{ review.gamename }}</a><br>
 			{% endfor %}
 		{% endif %}
 		<div class="Add_buttons">

@@ -16,7 +16,7 @@
 			{% if pages %}
 				<div style="text-align:left">
 					{% for page in pages %}
-						<a href={% url 'gamer_view:show_page' cat.category page.gamename %}><img src="{{ page.image.url }}" id="format_image" style="left:1.5%; margin-bottom:40px" border="2" alt="Image"></a>
+						<a href={% url 'gamer_view:show_page' cat.category page.slug %}><img src="{{ page.image.url }}" id="format_image" style="left:1.5%; margin-bottom:40px" border="2" alt="Image"></a>
 					{% endfor %}
 				</div>
 			{% endif %}

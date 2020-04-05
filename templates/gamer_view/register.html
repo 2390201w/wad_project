@@ -7,11 +7,11 @@ Register
 
 {% block body_block %}
 	<div class="content_box">
-	  <p>Register to Gamer-View</p>
 		{% if registered %}
-		<strong>Thank you for registering!</strong>
+		<p>Thank you for registering!</p><br/>
 		<a href="{% url 'gamer_view:home' %}">Return to the homepage</a><br />
 		{% else %}
+		<p>Register to Gamer-View</p>
 		<form id="register_page" method="post" action="{% url 'gamer_view:register' %}" enctype="multipart/form-data">
 			{% csrf_token %}
 

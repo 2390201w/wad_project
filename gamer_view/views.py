@@ -57,7 +57,7 @@ def show_page(request, category_name, game):
     context_dict={}
 
     try:
-        page = Page.objects.get(gamename=game)
+        page = Page.objects.get(slug=game)
         reviews= list(Review.objects.filter(gamename=page).order_by('datecreated'))
         rating=getAverage(page)
 
@@ -177,7 +177,7 @@ def add_page(request):
                 
             page.save()
             
-            return redirect('gamer_view:show_page', page.cat, page.gamename)
+            return redirect('gamer_view:show_page', page.cat, page.slug)
         else:
             messages.error(request, "Fields must not be empty")
             return redirect(reverse('gamer_view:add_page'))
