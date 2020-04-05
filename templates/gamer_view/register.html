@@ -8,9 +8,11 @@ Register
 {% block body_block %}
 	<div class="content_box" style="height:auto; padding-bottom: 280px">
 		{% if registered %}
-		<div style="height: auto; margin-bottom:40px; font-size: 24px">
+		<div style="height: 140px; margin-bottom: -280px;">
 			<p>Thank you for registering!</p><br/>
-			<a href="{% url 'gamer_view:home' %}">Return to the homepage</a><br />
+			<div class="button" style="left:50%; line-height:93px" >
+				<a href="{% url 'gamer_view:home' %}" style="color:white; text-decoration:none; font-size:24px; -webkit-text-stroke: 0px;">Return to the homepage</a>
+			</div>
 		</div>
 		{% else %}
 		<p>Register to Gamer-View</p>
