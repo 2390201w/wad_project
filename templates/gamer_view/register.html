@@ -6,10 +6,12 @@ Register
 {% endblock %}
 
 {% block body_block %}
-	<div class="content_box">
+	<div class="content_box" style="height:auto; padding-bottom: 280px">
 		{% if registered %}
-		<p>Thank you for registering!</p><br/>
-		<a href="{% url 'gamer_view:home' %}">Return to the homepage</a><br />
+		<div style="height: auto; margin-bottom:40px; font-size: 24px">
+			<p>Thank you for registering!</p><br/>
+			<a href="{% url 'gamer_view:home' %}">Return to the homepage</a><br />
+		</div>
 		{% else %}
 		<p>Register to Gamer-View</p>
 		<form id="register_page" method="post" action="{% url 'gamer_view:register' %}" enctype="multipart/form-data">

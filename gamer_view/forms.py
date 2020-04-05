@@ -8,14 +8,19 @@ class UserForm(forms.ModelForm):
             attrs={
                 'style': 'height:22.5px; position:relative; top:-6px; font-size:16px; width:205px'
             }
-        )                       
+        ),
+        error_messages={
+            'min_length': 'Choose a username between 6-30 characters',
+            'max_length': 'Choose a username between 6-30 characters'
+        }                  
     )
     email = forms.EmailField(
         widget=forms.EmailInput(
             attrs={
                 'style': 'height:22.5px; position:relative; top:-6px; font-size:16px; width:287px'
             }
-        )
+        ),
+        error_messages={'invalid': 'Invalid email Address'}
     )
 
     password = forms.CharField(
@@ -23,15 +28,17 @@ class UserForm(forms.ModelForm):
             attrs={
                 'style': 'height:22.5px; position:relative; top:-6px; font-size:16px; width:211px'
             }
-        )                       
+        ),
+        error_messages={
+            'min_length': 'Choose a password between 6-30 characters',
+            'max_length': 'Choose a password between 6-30 characters'
+        }
     )
 
     class Meta:
         model = User
         fields = ('username', 'email', 'password',)
-        help_texts = {
-            'username': None,
-        }
+
 
 class UserProfileForm(forms.ModelForm):
     
