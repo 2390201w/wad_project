@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from gamer_view.forms import UserForm, UserProfileForm ,CategoryForm, PageForm
+from gamer_view.forms import UserForm, UserProfileForm ,CategoryForm, PageForm, ReviewForm
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from gamer_view.models import Category, Page, Review ,User, UserProfile
@@ -150,6 +150,12 @@ def user_logout(request):
     logout(request)
     return redirect(reverse('gamer_view:home'))
 
+def myAccount(request):
+    
+    user= UserProfile.objects.get(user=request.user)
+    Reviews= Review.objects.filter(madeby=user)
+    
+    return render(request, 'gamer_view/myAccount.html', context={'myReviews':Reviews})
 
 def add_category(request):
     form= CategoryForm()
@@ -186,13 +192,23 @@ def add_page(request):
 
     return render(request, 'gamer_view/add_page.html', context={'form' :form} )
         
-def myAccount(request):
-    
-    user= UserProfile.objects.get(user=request.user)
-    Reviews= Review.objects.filter(madeby=user)
-    
-    return render(request, 'gamer_view/myAccount.html', context={'myReviews':Reviews})
-
+def add_review(request):
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review= form.save(commit =False)
+            user=UserProfile.objects.get(user=request.user)
+            review.madeby=user
+            
+            review.save()
+            return redirect('gamer_view:show_page', review.gamename.cat, review.gamename.slug)
+        else:
+            print(request.POST)
+            print(form.errors)
+            return redirect(reverse('gamer_view:add_review'))
+    else:
+        form =ReviewForm()
+    return render(request, 'gamer_view/add_review.html', context={'form' :form})
 
 # finds the average rating of the page and returns the integer
 def getAverage(game):

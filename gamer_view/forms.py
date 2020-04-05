@@ -1,5 +1,5 @@
 from django import forms
-from gamer_view.models import Page, Category, UserProfile
+from gamer_view.models import Page, Category, UserProfile, Review
 from django.contrib.auth.models import User
 
 class UserForm(forms.ModelForm):
@@ -72,3 +72,12 @@ class PageForm(forms.ModelForm):
     class Meta:
         model =Page
         fields=('gamename','cat','description', 'image', 'views',)
+
+class ReviewForm(forms.ModelForm):
+    gamename=forms.ModelChoiceField(queryset=Page.objects.all(),label="Game Name", required=True)
+    review=forms.CharField(max_length=500, label="Review")
+    rating=forms.IntegerField(widget=forms.HiddenInput(),initial=1)
+
+    class Meta:
+        model= Review
+        fields=('gamename','review', 'rating',)

@@ -51,7 +51,7 @@ class Review(models.Model):
     review=models.CharField(max_length=500)
     madeby=models.ForeignKey(UserProfile,on_delete=models.CASCADE , null=True)
     datecreated=models.DateField(default=datetime.now)
-    rating=models.PositiveSmallIntegerField(validators=[MinValueValidator(0),MaxValueValidator(5)])
+    rating=models.PositiveSmallIntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])
 
     def __str__(self):
         return f"{self.gamename}:{self.madeby}"    

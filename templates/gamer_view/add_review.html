@@ -1,0 +1,27 @@
+{% extends 'gamer_view/base.html' %}
+{% load static %}
+
+{% block title_block %}
+	Add Review
+{% endblock %}
+	
+{% block body_block %}
+	<div class="content_box">
+	<p>Make a review</p>
+	<form id="review_form" method="POST" action="{% url 'gamer_view:add_review' %}">
+		{% csrf_token %}
+        {{ form.as_p }}
+		
+		<div class="stars" data-rating="1">
+			<span class="star">&nbsp;</span>
+			<span class="star">&nbsp;</span>
+			<span class="star">&nbsp;</span>
+			<span class="star">&nbsp;</span>
+			<span class="star">&nbsp;</span>
+		</div>
+		<input type="submit" value="Create Review" class="button" style="line-height:100px; top:402px" />
+	</form>
+	</div>
+	
+	<script src="{% static 'js/star.js' %}"></script>
+{% endblock %}
