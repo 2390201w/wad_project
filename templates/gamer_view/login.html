@@ -9,7 +9,7 @@
 	<div class="content_box">
 	  <p>Sign in to Gamer-View</p>
 		{% for mess in messages %}
-			<p style="color:red" >{{ mess }}<p>
+			<div id="error_message"><p>{{ mess }}<p></div>
 		{% endfor %} 
 		<form id="login_form" method="POST" action="{% url 'gamer_view:login' %}">
 			{% csrf_token %}
