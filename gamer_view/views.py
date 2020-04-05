@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from gamer_view.forms import UserForm, UserProfileForm ,CategoryForm, PageForm, ReviewForm
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from gamer_view.models import Category, Page, Review ,User, UserProfile
 from django.contrib import messages
 from django.db.models import Avg, IntegerField
@@ -145,11 +146,12 @@ def user_login(request):
     else:
         return render(request,'gamer_view/login.html')
 
-# @login_required
+@login_required
 def user_logout(request):
     logout(request)
     return redirect(reverse('gamer_view:home'))
 
+@login_required
 def myAccount(request):
     
     user= UserProfile.objects.get(user=request.user)
@@ -157,6 +159,7 @@ def myAccount(request):
     
     return render(request, 'gamer_view/myAccount.html', context={'myReviews':Reviews})
 
+@login_required
 def add_category(request):
     form= CategoryForm()
 
@@ -172,6 +175,7 @@ def add_category(request):
         
     return render(request, 'gamer_view/add_category.html')
 
+@login_required
 def add_page(request):
     if request.method =='POST':
         form = PageForm(request.POST, request.FILES)
@@ -191,7 +195,8 @@ def add_page(request):
         form=PageForm()
 
     return render(request, 'gamer_view/add_page.html', context={'form' :form} )
-        
+
+@login_required        
 def add_review(request):
     if request.method == "POST":
         form = ReviewForm(request.POST)
