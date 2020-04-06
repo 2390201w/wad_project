@@ -91,3 +91,10 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model= Review
         fields=('gamename','review', 'rating',)
+
+class SearchForm(forms.ModelForm):
+    gamename=forms.CharField(max_length=30)
+
+    class Meta:
+        model = Page
+        fields=('gamename',)

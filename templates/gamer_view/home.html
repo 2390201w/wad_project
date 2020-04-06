@@ -15,6 +15,17 @@
 	<div id="about_us_button" class="button">
 	  <a href="{% url 'gamer_view:about' %}" style="color:white; text-decoration:none">About Us</a>
 	</div>
+	<div>
+		{% for mess in messages %}
+			<div id="error_message"><p>{{ mess }}<p></div>
+		{% endfor %} 
+		<form id="search_form" method="post" action="{% url 'gamer_view:home' %}">
+			{% csrf_token %}
+			<p id="search_detail">search: <input type="text" name="gamename" maxlength="30" size="50" class="format_input" /></p>
+			<br />
+			<input type="submit" name="submit" value="Search" class="button" style="align:center; bottom:-186px"/>
+		</form>
+	</div>
 	<div id="latest_additions" class="button">
 	  <p> Latest Additions </p>
 	</div>

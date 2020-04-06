@@ -14,11 +14,24 @@ from django.db.models import Avg, IntegerField
 '''
 def home(request):
     
-    #Get the latest added page
+    # gets the latest added page
     page_list = Page.objects.order_by('-date_created')[:3]
 
     context_dict={}
     context_dict['pages']=page_list
+
+    if request.method =='POST':
+        # formats the input from user to match the slug
+        name= (request.POST.get('gamename')).replace(' ' , '-').lower()
+
+        # redirects user to game page if game entered by user exists
+        try:
+            page=Page.objects.filter(slug=name).values('cat_id')
+            return redirect('gamer_view:show_page', page[0]['cat_id'], name)
+        except:
+
+            # error message when game does  not exist
+             messages.error(request, "Game does not exist")        
 
     return render(request, 'gamer_view/home.html', context=context_dict)
 
