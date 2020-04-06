@@ -8,9 +8,12 @@ from gamer_view.models import Category, Page, Review ,User, UserProfile
 from django.contrib import messages
 from django.db.models import Avg, IntegerField
 
-
-# Create your views here
+'''
+    Home view:
+    Displays to the user the 3 latest additions to the site 
+'''
 def home(request):
+    
     #Get the latest added page
     page_list = Page.objects.order_by('-date_created')[:3]
 
@@ -19,30 +22,45 @@ def home(request):
 
     return render(request, 'gamer_view/home.html', context=context_dict)
 
+'''
+    About view:
+    Displays informations about the site
+'''
 def about(request):
     return render(request, 'gamer_view/about.html')
 
-
-#displays all the categories
+'''
+    Show Categories view:
+    Displays all the categories in the site with thier 3 most viewed games
+'''
 def show_categories(request):
     context_dict={}
     cat_list={}
     cats = Category.objects.all()
+    
     for cat in cats:
-        page=list(Page.objects.filter(cat=cat.category).order_by('-date_created')[:3])
+
+        # gets the games related to the category  
+        page=list(Page.objects.filter(cat=cat.category).order_by('-views')[:3])
+
+        # creates a dictionary entry with the name of the category as the key and the list of games as the value 
         cat_list[cat]=page
     context_dict['categories']=cat_list
     return render(request, 'gamer_view/categories.html', context=context_dict)
 
+'''
+    Show Category view:
+    Displays the category and all its games
+'''
 def show_category(request, category_name):
     context_dict={}
 
     try:
-        #Gets the category
+        # gets the category name
         category = Category.objects.get(category=category_name)
 
         
-        #Get the related pages
+        # get the related games
         pages=Page.objects.filter(cat=category)
 
         context_dict['pages']=pages
@@ -54,12 +72,20 @@ def show_category(request, category_name):
 
     return render(request, 'gamer_view/category.html', context=context_dict)
 
+'''
+    Show Page view:
+    Displays the game details and all its reviews 
+'''
 def show_page(request, category_name, game):
     context_dict={}
 
     try:
         page = Page.objects.get(slug=game)
-        reviews= list(Review.objects.filter(gamename=page).order_by('datecreated'))
+
+        # gets the reviews for the game and sorts them in a descending order
+        reviews= list(Review.objects.filter(gamename=page).order_by('-datecreated'))
+
+        # gets the average rating for the game using the getAverage function
         rating=getAverage(page)
 
         context_dict['page']=page
@@ -73,30 +99,37 @@ def show_page(request, category_name, game):
 
     return render(request, 'gamer_view/page.html', context=context_dict)
 
+'''
+    Trending view:
+    Displays the top 5 most viewed and top rated games in the site
+'''
 def trending(request):
     context_dict={}
     avg={}
-    
     page_list= Page.objects.all()
     
     for game in page_list:
+        
+        # creates a dictionary entry with the game as the key and the average rating for the game as the value
         avg[game]=getAverage(game)
 
-    # removes pages that do not have reviews
-    newavg=removeNull(avg)
+    # removes games that do not have reviews
+    avg=removeNull(avg)
 
-    # Gets the top 5 rated
-    top_rated_pages=sorted(newavg, key=newavg.get, reverse=True)[:5]
+    # gets the top 5 rated games
+    top_rated_pages=sorted(avg, key=avg.get, reverse=True)[:5]
     
-    #Get the most viewed pages
+    # get the 5 most viewed games
     most_viewed=Page.objects.order_by('-views')[:5]
 
     context_dict['top_rate_pages']=top_rated_pages
     context_dict['most_viewed']=most_viewed
     return render(request, 'gamer_view/trending.html', context=context_dict)
 
-
-
+'''
+    Register view:
+    Lets users register to our site
+'''
 def register(request):
     registered = False
 
@@ -105,7 +138,6 @@ def register(request):
         profile_form = UserProfileForm(request.POST,request.FILES)
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
-
             user.set_password(user.password)
             user.save()
 
@@ -118,8 +150,6 @@ def register(request):
             profile.save()
 
             registered = True
-        else:
-            print(user_form.errors, profile_form.errors)
     
     else:
         user_form = UserForm()
@@ -128,7 +158,10 @@ def register(request):
     return render(request, 'gamer_view/register.html', context = {'user_form' : user_form,
                                                                     'profile_form' : profile_form,
                                                                     'registered' : registered})
-
+'''
+    User Login view:
+    Lets user login if they have an account
+'''
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -140,17 +173,28 @@ def user_login(request):
             login(request,user)
             return redirect(reverse('gamer_view:home'))
         else:
-            messages.error(request, "Username and/or password is incorrect")
+            
+            # error message when users enter invalid details
+            messages.error(request, "Username and/or password is invalid")
             return redirect(reverse('gamer_view:login'))
 
     else:
         return render(request,'gamer_view/login.html')
-
+    
+'''
+    User Logout view:
+    Lets users logout provided that they are logged in
+'''
 @login_required
 def user_logout(request):
     logout(request)
     return redirect(reverse('gamer_view:home'))
 
+'''
+    My Account view:
+    Displays the user's name, profile picture, reviews made.
+    can only be accessed if they are logged in
+'''
 @login_required
 def myAccount(request):
     
@@ -159,7 +203,10 @@ def myAccount(request):
     
     return render(request, 'gamer_view/myAccount.html', context={'myReviews':Reviews,
                                                                  'user': user})
-
+'''
+    Add Category view:
+    Lets users add a category provided that they are logged in
+'''
 @login_required
 def add_category(request):
     form= CategoryForm()
@@ -171,11 +218,17 @@ def add_category(request):
             form.save(commit=True)
             return redirect('gamer_view:show_categories')
         else:
+            
+            # error message when user tries to add a category with no name
             messages.error(request, "Field must not be empty")
             return redirect(reverse('gamer_view:add_category'))
         
     return render(request, 'gamer_view/add_category.html')
 
+'''
+    Add Page view:
+    Lets users add a game provided that they are logged in
+'''
 @login_required
 def add_page(request):
     if request.method =='POST':
@@ -190,6 +243,8 @@ def add_page(request):
             
             return redirect('gamer_view:show_page', page.cat, page.slug)
         else:
+            
+            # error message when user tries to add a game with empty field(s)
             messages.error(request, "Fields must not be empty")
             return redirect(reverse('gamer_view:add_page'))
     else:
@@ -197,6 +252,10 @@ def add_page(request):
 
     return render(request, 'gamer_view/add_page.html', context={'form' :form} )
 
+'''
+    Add Review view:
+    Lets users add a review provided that they are logged in
+'''
 @login_required        
 def add_review(request):
     if request.method == "POST":
@@ -209,19 +268,21 @@ def add_review(request):
             review.save()
             return redirect('gamer_view:show_page', review.gamename.cat, review.gamename.slug)
         else:
-            print(request.POST)
-            print(form.errors)
             return redirect(reverse('gamer_view:add_review'))
     else:
         form =ReviewForm()
     return render(request, 'gamer_view/add_review.html', context={'form' :form})
 
-# finds the average rating of the page and returns the integer
+'''
+    Helper functions:
+    getAverage- obtains the all the ratings made in the reviews for a game and calculates its average, returning the integer value
+    removeNull- loops though the dictionary and adds the entries where its value is not "None"
+'''
+
 def getAverage(game):
     avg= Review.objects.filter(gamename=game).aggregate(Avg('rating', output_field=IntegerField()))
     average=avg['rating__avg']
     return average
 
-# removes dictionary with null values
 def removeNull(games):
     return{k:v for k, v in games.items() if v is not None}    
