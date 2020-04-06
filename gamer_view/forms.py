@@ -84,8 +84,22 @@ class PageForm(forms.ModelForm):
         fields=('gamename','cat','description', 'image', 'views',)
 
 class ReviewForm(forms.ModelForm):
-    gamename=forms.ModelChoiceField(queryset=Page.objects.all(),label="Game Name", required=True)
-    review=forms.CharField(max_length=500, label="Review")
+    gamename=forms.ModelChoiceField(queryset=Page.objects.all(),label="Game Name", required=True,
+        widget=forms.Select(
+            attrs={
+                'style': 'height:30px; position:relative; top:-7px;'
+            }
+        )
+    )
+    review=forms.CharField(max_length=500, label="Review",
+        widget=forms.Textarea(
+            attrs={
+                'rows': 4,
+                'cols': 40,
+                'style': 'height:150px; width: 500px; position:relative; top: 70px; font-size: 14px; padding:0.5%; margin-top:-90px'
+            }
+        )
+    )
     rating=forms.IntegerField(widget=forms.HiddenInput(),initial=1)
 
     class Meta:

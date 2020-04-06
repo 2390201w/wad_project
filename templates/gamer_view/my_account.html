@@ -10,8 +10,8 @@
 	<p>Welcome, {{ user.user.username }}</p>
 	<p><img src="{{ user.picture.url }}" id="format_image" border="2" style="height:280px; left:0px; margin-left: 0px; margin-top:40px" alt="Profile Picture"></p>
 	</div>
-	<div id="content_text" style="margin-left:-22.5%; top: 76.2%; width:50%">
-		<p>
+
+	<div id="content_text" style="margin-left:-22.5%; top: 78.75%; width:50%">
 		<div class="add_button">
 				<a href="{% url 'gamer_view:add_review' %}" style="color:white; text-decoration:none; line-height:85px;">Add Review</a>
 		</div>
@@ -21,7 +21,6 @@
 		<div class="add_button" style="margin-left:65.5%;">
 				<a href="{% url 'gamer_view:add_page' %}"  style="color:white; text-decoration:none; line-height:85px;">Add Game</a>
 		</div>
-		</p>
 	</div>
 	
 	<div class="content_box" style="top:95.5%; height:auto; margin-bottom:40px">

@@ -13,9 +13,9 @@
 		{% endfor %} 
 		<form id="login_form" method="POST" action="{% url 'gamer_view:login' %}">
 			{% csrf_token %}
-			<p id="login_details">Username: <input type="text" name="username" maxlength="20" size="50" class="format_input" /></p>
+			<p id="login_details">Username: <input type="text" name="username" minlength="6" maxlength="30" size="50" class="format_input" /></p>
 			<br />
-			<p id="login_details">Password: <input type="password" name="password" maxlength="20" size="50" class="format_input" /></p>
+			<p id="login_details">Password: <input type="password" name="password" minlength="6" maxlength="30" size="50" class="format_input" /></p>
 			<br />
 			<p id="login_details" style="top:-370px; margin-top:165px"><input type="submit" value="Sign In" class="button" style="line-height:100px; top:402px" /></p>
 		</form>
