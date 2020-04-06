@@ -21,9 +21,9 @@
 		{% endfor %} 
 		<form id="search_form" method="post" action="{% url 'gamer_view:home' %}">
 			{% csrf_token %}
-			<p id="search_detail">search: <input type="text" name="gamename" maxlength="30" size="50" class="format_input" /></p>
-			<br />
-			<input type="submit" name="submit" value="Search" class="button" style="align:center; bottom:-186px"/>
+			<div class="button" style="height:70px; position:absolute; left:50%; margin-left: -140px; top:42.3%; line-height: 60px">
+				<input placeholder="Search for a game..." type="text" name="gamename" maxlength="30" size="30" style="height:20px; width:225px; font-size:16px;"/>
+			</div>
 		</form>
 	</div>
 	<div id="latest_additions" class="button">

@@ -7,8 +7,9 @@
 
 {% block body_block %}
     <div class="content_box">
+	<p>Add a Game</p>
 		{% for mess in messages %}
-			{{ mess }}
+			<p>{{ mess }}<p>
 		{% endfor %}
 		<form id="page_form" method="post" action="{% url 'gamer_view:add_page' %}" enctype="multipart/form-data">
 			{% csrf_token %}

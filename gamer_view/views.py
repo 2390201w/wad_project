@@ -232,8 +232,8 @@ def add_category(request):
             return redirect('gamer_view:show_categories')
         else:
             
-            # error message when user tries to add a category with no name
-            messages.error(request, "Field must not be empty")
+            # Error message when the input is empty or the category exists
+            messages.error(request, "Your entry must be non-empty and a non-existing category")
             return redirect(reverse('gamer_view:add_category'))
         
     return render(request, 'gamer_view/add_category.html')

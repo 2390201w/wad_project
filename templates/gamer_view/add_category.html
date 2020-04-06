@@ -6,14 +6,15 @@
 {% endblock %}
 	
 {% block body_block %}
-    <div class="content_box">
+    <div class="content_box" style="height:437.4px">
+		<p>Add a Game Category</p>
 		{% for mess in messages %}
-			<p>{{ mess }}</p>
+			<div id="error_message" style="font-size:20px; top:30%"><p>{{ mess }}</p></div>
 		{% endfor %}
 		<form id="category_form" method="post" action="{% url 'gamer_view:add_category' %}">
 			{% csrf_token %}
-			<p id="login_details"> Add Category :<input type="text" name="category" maxlength="20" size="50"  class="format_input"/></p>
-			<p><input type="submit" value="Add Category" class="page_button" style="line-height:100px; top:402px" /></p>
+			<p id="login_details" style="top:60px">Category Name: <input type="text" name="category" maxlength="30" style="width:305px"class="format_input"/></p>
+			<p><input type="submit" value="Add Category" class="page_button" style="height:100px; width:350px; left:20%; margin-top:90px"/></p>
 		</form>
 	</div>
 {% endblock %}
