@@ -7,14 +7,16 @@
 
 {% block body_block %}
 	<div class="content_box">
-	  <p>My Reviews</p>
+	<p><img src="{{ user.picture.url }}" id="format_image" border="2" alt="Profile Picture"></p>
+	<p>{{ user.user.username }} - Reviews</p>
 	</div>
 	<div id="content_text">
 	<p>
 		{% if myReviews %}
 			<p> Game Name: </p>
-			{% for review in myReviews %}
-				<a href={% url 'gamer_view:show_page' review.gamename.cat review.gamename.slug %}>{{ review.gamename }}</a><br>
+			{% for rev in myReviews %}
+				<a href={% url 'gamer_view:show_page' rev.gamename.cat rev.gamename.slug %}>{{ rev.gamename }}</a><br>
+				<p>Review: {{ rev.review }}</p>
 			{% endfor %}
 		{% endif %}
 		<div class="Add_buttons">

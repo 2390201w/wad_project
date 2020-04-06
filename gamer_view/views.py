@@ -157,7 +157,8 @@ def myAccount(request):
     user= UserProfile.objects.get(user=request.user)
     Reviews= Review.objects.filter(madeby=user)
     
-    return render(request, 'gamer_view/myAccount.html', context={'myReviews':Reviews})
+    return render(request, 'gamer_view/myAccount.html', context={'myReviews':Reviews,
+                                                                 'user': user})
 
 @login_required
 def add_category(request):
