@@ -28,5 +28,13 @@
 				The specified game does not exist.
 			</div>
 		{% endif %}
+		
+		{% if reviews %}
+			{% for rev in reviews %}
+				<p>{{ rev.madeby.user.username }}</br>
+				{{ rev.review }}</br>
+				{{ rev.rating }}</p></br>
+			{% endfor %}
+		{% endif %}
 	</div>
 {% endblock %}
