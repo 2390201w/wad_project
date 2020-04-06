@@ -16,6 +16,6 @@ path('trending/', views.trending, name='trending'),
 path('register/',views.register, name='register'),
 path('login/',views.user_login, name='login'),
 path('logout/', views.user_logout, name='logout'),
-path('myAccount/', views.myAccount, name='myAccount'),
+path('my_account/', views.my_account, name='my_account'),
 ]
 

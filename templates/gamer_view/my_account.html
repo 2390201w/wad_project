@@ -1,0 +1,53 @@
+{% extends 'gamer_view/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    My Account
+{% endblock %}
+
+{% block body_block %}
+	<div class="content_box">
+	<p>Welcome, {{ user.user.username }}</p>
+	<p><img src="{{ user.picture.url }}" id="format_image" border="2" style="height:280px; left:0px; margin-left: 0px; margin-top:40px" alt="Profile Picture"></p>
+	</div>
+	<div id="content_text" style="margin-left:-22.5%; top: 76.2%; width:50%">
+		<p>
+		<div class="add_button">
+				<a href="{% url 'gamer_view:add_review' %}" style="color:white; text-decoration:none; line-height:85px;">Add Review</a>
+		</div>
+		<div class="add_button" style="margin-left:32.75%">
+				<a href="{% url 'gamer_view:add_category' %}"  style="color:white; text-decoration:none; line-height:85px;">Add Category</a>
+		</div>
+		<div class="add_button" style="margin-left:65.5%;">
+				<a href="{% url 'gamer_view:add_page' %}"  style="color:white; text-decoration:none; line-height:85px;">Add Game</a>
+		</div>
+		</p>
+	</div>
+	
+	<div class="content_box" style="top:95.5%; height:auto; margin-bottom:40px">
+		{% if myReviews %}
+		<p> Your Reviews: </p>
+		{% for rev in myReviews %}
+			<div class="add_button" style="-webkit-text-stroke: 0px; font-size:1vw; line-height:10px; left:50%; margin-left:-120px">
+				<p><a href={% url 'gamer_view:show_page' rev.gamename.cat rev.gamename.slug %} style="color:white; text-decoration:none">{{ rev.gamename }}</a><br></p>
+				{% if rev.rating == 1 %}
+				<p><img src={%static "images/1.png" %} style="height:20px; margin-top:-5px" alt="Rating"></p>
+				{% endif %}
+				{% if rev.rating == 2 %}
+				<p><img src={%static "images/2.png" %} style="height:20px; margin-top:-5px" alt="Rating"></p>
+				{% endif %}
+				{% if rev.rating == 3 %}
+				<p><img src={%static "images/3.png" %} style="height:20px; margin-top:-5px" alt="Rating"></p>
+				{% endif %}
+				{% if rev.rating == 4 %}
+				<p><img src={%static "images/4.png" %} style="height:20px; margin-top:-5px" alt="Rating"></p>
+				{% endif %}
+				{% if rev.rating == 5 %}
+				<p><img src={%static "images/5.png" %} style="height:20px; margin-top:-5px" alt="Rating"></p>
+				{% endif %}
+			</div>
+			<div class="page_button" id="description" style="margin-top:200px; padding:1%; left:50.9%; margin-bottom:60px; height:110px">{{ rev.review }}</div>
+		{% endfor %}
+	{% endif %}
+	</div>
+{% endblock %}

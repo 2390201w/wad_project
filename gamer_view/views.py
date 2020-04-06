@@ -196,12 +196,12 @@ def user_logout(request):
     can only be accessed if they are logged in
 '''
 @login_required
-def myAccount(request):
+def my_account(request):
     
     user= UserProfile.objects.get(user=request.user)
     Reviews= Review.objects.filter(madeby=user)
     
-    return render(request, 'gamer_view/myAccount.html', context={'myReviews':Reviews,
+    return render(request, 'gamer_view/my_account.html', context={'myReviews':Reviews,
                                                                  'user': user})
 '''
     Add Category view:

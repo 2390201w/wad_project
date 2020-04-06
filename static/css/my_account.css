@@ -1,0 +1,16 @@
+.add_button{
+    border-radius: 16px;
+    border: 2px solid #000000;
+    background: #4572C4;
+    width: 240px;
+    height: 80px;
+    text-align: center;
+    color: white;
+    font-size: 28px;
+    font-family: "Bahnschrift";
+	position: absolute;
+}
+
+#review_box{
+	
+}
