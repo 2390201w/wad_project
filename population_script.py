@@ -47,7 +47,7 @@ def add_review(game, review, user, date, rating):
 def populate():
 
     #list of Categories
-    category=['FPS', 'MOBA', 'Action', 'MMORPG', 'Strategy', 'Sport', 'Simulator', 'Racing']
+    category=['FPS', 'MOBA', 'Action', 'MMORPG','ETC', 'Strategy', 'Sport', 'Simulator', 'Racing']
 
     #list of Games
     games= [{'gamename': 'Call Of Duty', 'category':'FPS','date': '2018-07-10','description': "shoot people",'image': 'game_images/cod.jfif','views':'5'},
