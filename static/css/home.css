@@ -5,7 +5,7 @@
   position: absolute;
   width: 280px;
   height: 100px;
-  margin-left:-140px;
+  margin-left: -140px;
   text-align: center;
   line-height: 105px;
   color: white;
@@ -41,4 +41,33 @@
   width: 90%;
   left: 0.5%;
   margin-bottom: 40px;
+}
+
+#search_bar_button {
+	height: 70px;
+	position: absolute;
+	left: 50%;
+	margin-left: -140px;
+	top: 45%;
+	line-height: 60px;
+}
+
+#search_bar_input {
+	height: 20px;
+	width: 225px;
+	font-size: 16px;
+}
+
+#search_error {
+	font-family: "Bahnschrift";
+	position: absolute;
+	left: 44.5%;
+	top: 39%;
+}
+
+#home_image {
+	height: 165px;
+	width: 280px;
+	margin-left: 10%;
+	border: 2px solid #000000;
 }

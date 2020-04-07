@@ -1,0 +1,23 @@
+#add_category_content_box {
+	height: 437.4px;
+}
+
+#add_category_input {
+	top: 60px;
+}
+
+#add_category_input_box {
+	width:305px;
+}
+
+#add_category_error {
+	font-size: 20px;
+	top: 30%;
+}
+
+#add_category_button {
+	height: 100px;
+	width: 350px;
+	left: 20%;
+	margin-top: 90px;
+}

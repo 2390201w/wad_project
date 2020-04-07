@@ -1,9 +1,37 @@
 #category_box {
   text-align: center;
   border-radius: 36px;
-  border: 2px solid #000000;
   position: absolute;
   width: 70%;
   height: auto;
   left: 15%;
+}
+
+#category_images {
+  position: relative;
+  height: 165px;
+  width: 280px;
+  left: 1.5%;
+  margin-left: 8%;
+  margin-bottom: 40px;
+  top: 3px;
+  color: black;
+  border: 2px solid black;
+}
+
+#empty_category_message {
+	font-size: 30px;
+	margin-top: 70px;
+	margin-bottom: 40px;
+	-webkit-text-stroke: 0px;
+}
+
+#no_category_message {
+  text-align: left;
+  border-radius: 36px;
+  position: absolute;
+  width: 70%;
+  height: auto;
+  left: 15%;
+  text-align: center;
 }

@@ -1,8 +1,36 @@
-#trending_type {
+#trending_content_area {
+  z-index: -2;
+  width: 97.5%;
+  height: auto;
+  font-size: 60px;
+  text-align: left;
+  color: white;
+  font-family: "Bahnschrift";
+  line-height: 230px;
+  position: absolute;
+  top: 200px;
+  left: 1.25%;
+  max-height: 1500px;
+}
+
+#trending_title {
+  line-height: 0px;
+}
+
+#trending_toprated {
   z-index: -2;
   font-size: 34px;
   position: relative;
   margin-left: 5%;
+}
+
+#trending_mostviewed {
+  z-index: -2;
+  font-size: 34px;
+  position: relative;
+  margin-left: 5%;
+  left: 51.1%;
+  top: -1174px;
 }
 
 #trending_box {
@@ -16,12 +44,31 @@
   margin-left: -34%;
 }
 
-#trending_images {
+#toprated_image_block {
   position: relative;
   width: 10%;
   line-height: 125px;
   top: 10px;
   color: black;
+}
+
+#mostviewed_image_block {
+  position: relative;
+  width: 10%;
+  line-height: 125px;
+  top: 10px;
+  color: black;
+  left: 51.1%;
+  top: -1164px;
+}
+
+#trending_image {
+  height: 165px;
+  width: 280px;
+  margin-left: 18%;
+  color: black;
+  margin-top: -70px;
+  border: 2px solid black;
 }
 
 #trending_description {
@@ -33,7 +80,7 @@
   line-height: 18.5px;
   text-align: left;
   font-size: 16px;
-  margin-bottom:-231px;
+  margin-bottom: -231px;
   
   position: relative;
   top: -274px;

@@ -7,7 +7,6 @@
   color: white;
   font-family: "Bahnschrift";
   line-height: 230px;
-  
   position: absolute;
   top: 200px;
   left: 10%;
@@ -34,11 +33,11 @@
 }
 
 #format_image {
-position: relative;
-height: 165px;
-width: 280px;
-left: 5%;
-margin-left: 8%;
-top: 3px;
-color: black
+  position: relative;
+  height: 165px;
+  width: 280px;
+  left: 5%;
+  margin-left: 8%;
+  top: 3px;
+  color: black;
 }

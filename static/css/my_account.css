@@ -1,4 +1,4 @@
-.add_button{
+.add_button {
     border-radius: 16px;
     border: 2px solid #000000;
     background: #4572C4;
@@ -9,4 +9,87 @@
     font-size: 28px;
     font-family: "Bahnschrift";
 	position: absolute;
+}
+
+#format_profile_image {
+  position: relative;
+  height: 280px;
+  width: 280px;
+  margin-top: 43px;
+  color: black;
+  border: 2px solid #000000;
+}
+
+#add_review_box {
+  width: 12.6%;
+  color: white;
+  font-size: 30px;
+  font-family: "Bahnschrift";
+  text-align: center;
+  position: absolute;
+  top: 78.75%;
+  left: 50%;
+  margin-left: -22.5%;
+}
+
+#add_category_box {
+  width: 12.6%;
+  color: white;
+  font-size: 30px;
+  font-family: "Bahnschrift";
+  text-align: center;
+  position: absolute;
+  top: 78.75%;
+  left: 50%;
+  margin-left: -6%;
+}
+
+#add_game_box {
+  width: 12.6%;
+  color: white;
+  font-size: 30px;
+  font-family: "Bahnschrift";
+  text-align: center;
+  position: absolute;
+  top: 78.75%;
+  left: 50%;
+  margin-left: 10.25%;
+}
+
+#add_buttons_text {
+  color: white;
+  text-decoration: none;
+  line-height: 85px;
+}
+
+#review_box {
+  top: 95.5%;
+  height: auto;
+  margin-bottom: 40px;
+}
+
+#review_game_name_button {
+  -webkit-text-stroke: 0px;
+  font-size: 1vw;
+  line-height: 10px;
+  left: 50%;
+  margin-left: -120px;
+}
+
+#format_user_ratings {
+  height: 20px;
+  margin-top: -5px;
+}
+
+#format_user_description {
+  width: 76%;
+  height: 110px;
+  line-height: 18px;
+  top: -20px;
+  text-align: left;
+  font-size: 16px;
+  margin-top:200px;
+  padding: 1%;
+  left: 50.9%;
+  margin-bottom: 60px;
 }

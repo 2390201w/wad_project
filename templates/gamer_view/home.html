@@ -6,34 +6,41 @@
 {% endblock %}
 
 {% block body_block %}
+
+	<!-- home page navigation buttons -->
 	<div id="category_button" class="button">
-	  <a href="{% url 'gamer_view:show_categories' %}" style="color:white; text-decoration:none"> Categories </a>
+	  <a href="{% url 'gamer_view:show_categories' %}" id="format_hyperlink"> Categories </a>
 	</div>
 	<div id="trending_button" class="button">
-	  <a href="{% url 'gamer_view:trending' %}" style="color:white; text-decoration:none"> Trending </a>
+	  <a href="{% url 'gamer_view:trending' %}" id="format_hyperlink"> Trending </a>
 	</div>
 	<div id="about_us_button" class="button">
-	  <a href="{% url 'gamer_view:about' %}" style="color:white; text-decoration:none">About Us</a>
+	  <a href="{% url 'gamer_view:about' %}" id="format_hyperlink">About Us</a>
 	</div>
+	
+	<!-- search bar functionality -->
 	<div>
 		{% for mess in messages %}
-			<div id="error_message"><p>{{ mess }}<p></div>
+			<div class="error_message" id="search_error"><p>{{ mess }}<p></div>
 		{% endfor %} 
 		<form id="search_form" method="post" action="{% url 'gamer_view:home' %}">
 			{% csrf_token %}
-			<div class="button" style="height:70px; position:absolute; left:50%; margin-left: -140px; top:42.3%; line-height: 60px">
-				<input placeholder="Search for a game..." type="text" name="gamename" maxlength="30" size="30" style="height:20px; width:225px; font-size:16px;"/>
+			<div class="button" id="search_bar_button">
+				<input placeholder="Search for a game..." type="text" name="gamename" maxlength="30" size="30" id="search_bar_input"/>
 			</div>
 		</form>
 	</div>
+	
+	<!-- display 3 latest added games -->
 	<div id="latest_additions" class="button">
 	  <p> Latest Additions </p>
 	</div>
 	<div id="game_box" class="button">
 		<div id="additions_images">
 		{% for page in pages %}
-			<a href={% url 'gamer_view:show_page' page.cat page.slug %} style="color:black"><img src="{{ page.image.url }}" style="height:165px; width:280px; margin-left:10%; color:black" border="2" alt="{{ page.gamename }}"></a>
+			<a href={% url 'gamer_view:show_page' page.cat page.slug %} style="color:black"><img src="{{ page.image.url }}" id="home_image" alt="{{ page.gamename }}"></a>
 		{% endfor %}
 		</div>
 	</div>
+	
 {% endblock %}

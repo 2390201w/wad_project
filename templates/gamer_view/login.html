@@ -6,18 +6,25 @@
 {% endblock %}
 
 {% block body_block %}
+	
+	<!-- 'Sign In' content box -->
 	<div class="content_box">
 	  <p>Sign in to Gamer-View</p>
+	  
+		<!-- display error message for invalid login input -->
 		{% for mess in messages %}
-			<div id="error_message"><p>{{ mess }}<p></div>
+			<div class="error_message"><p>{{ mess }}<p></div>
 		{% endfor %} 
+		
+		<!-- display input form -->
 		<form id="login_form" method="POST" action="{% url 'gamer_view:login' %}">
 			{% csrf_token %}
-			<p id="login_details">Username: <input type="text" name="username" minlength="6" maxlength="30" size="50" class="format_input" /></p>
+			<p class="input_details">Username: <input type="text" name="username" minlength="6" maxlength="30" size="50" class="format_input" /></p>
 			<br />
-			<p id="login_details">Password: <input type="password" name="password" minlength="6" maxlength="30" size="50" class="format_input" /></p>
+			<p class="input_details">Password: <input type="password" name="password" minlength="6" maxlength="30" size="50" class="format_input" /></p>
 			<br />
-			<p id="login_details" style="top:-370px; margin-top:165px"><input type="submit" value="Sign In" class="button" style="line-height:100px; top:402px" /></p>
+			<p class="input_details" id="sign_in_button"><input type="submit" value="Sign In" class="button" id="sign_in_button_text" /></p>
 		</form>
 	</div>
+	
 {% endblock %}

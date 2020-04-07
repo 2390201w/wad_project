@@ -6,26 +6,33 @@ Register
 {% endblock %}
 
 {% block body_block %}
-	<div class="content_box" style="height:auto; padding-bottom: 280px">
+
+	<!-- 'Register' page content box -->
+	<div class="content_box" id="register_content_box">
+	
+		<!-- if registered then return a message -->
 		{% if registered %}
-		<div style="height: 140px; margin-bottom: -280px;">
+		<div id="successful_register_content_box">
 			<p>Thank you for registering!</p><br/>
-			<div class="button" style="left:50%; line-height:93px" >
-				<a href="{% url 'gamer_view:home' %}" style="color:white; text-decoration:none; font-size:24px; -webkit-text-stroke: 0px;">Return to the homepage</a>
+			<div class="button" id="register_homepage_return_button">
+				<a href="{% url 'gamer_view:home' %}" id="register_homepage_return_button_text">Return to the homepage</a>
 			</div>
 		</div>
+		
+		<!-- register form display -->
 		{% else %}
 		<p>Register to Gamer-View</p>
 		<form id="register_page" method="post" action="{% url 'gamer_view:register' %}" enctype="multipart/form-data">
 			{% csrf_token %}
 
-			<!-- Display each form -->
+			<!-- display each form -->
 			{{ user_form.as_p }}
 			{{ profile_form.as_p }}
 
-			<!-- Provide a button to click to submit the form. -->
-			<input type="submit" name="submit" value="Register" class="button" style="align:center; bottom:-186px" />
+			<!-- provide a button to click to submit the form -->
+			<input type="submit" name="submit" value="Register" class="button" id="register_button" />
 		</form>
 		{% endif %}
 	</div>
+	
 {% endblock %}

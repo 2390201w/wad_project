@@ -1,0 +1,17 @@
+#add_review_error {
+	font-size: 20px;
+	top: 30%;
+}
+
+#add_review_input {
+	top: 60px;
+}
+
+#format_add_review_stars {
+	line-height: 130px;
+}
+
+#add_review_button {
+	line-height: 100px;
+	top: 350px;
+}

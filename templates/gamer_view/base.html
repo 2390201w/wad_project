@@ -9,6 +9,8 @@
                 Welcome!
             {% endblock %}
 		</title>
+		
+		<!-- css stylesheets -->
 		<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
@@ -20,51 +22,57 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'css/category.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/trending.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/star.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/add_category.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/add_page.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/add_review.css' %}">
 	</head>
+	
 	<body>
+	
+		<!-- page body reference -->
 	    <div>
             {% block body_block %}
             {% endblock %}
         </div>
+		
+		<!-- formatting of base template -->
 		<div id="banner"></div>
 		<div id="icon">
-		  <a href="{% url 'gamer_view:home' %}">
-		  <img src={% static 'images/controller.png' %} alt="Controller" style="width:150px">
+			<a href="{% url 'gamer_view:home' %}">
+			<img src={% static 'images/controller.png' %} alt="Controller" id="format_icon">
 		</div>
 		<div id="title">
-		  <a href="{% url 'gamer_view:home' %}">
-			<img src={% static 'images/title.png' %} alt="Title">
-		  </a>
+			<a href="{% url 'gamer_view:home' %}">
+				<img src={% static 'images/title.png' %} alt="Title">
+			</a>
 		</div>
 
+		<!-- profile buttons change dependant on if the user is logged in or logged out -->
 		{% if request.user.is_authenticated %}
-
 		<div id="banner_button_1" class="banner_button">
 			<p>
-				<a href="{% url 'gamer_view:my_account' %}"  style="color:white; text-decoration:none; font-size:24px">
+				<a href="{% url 'gamer_view:my_account' %}"  id="format_my_account_button">
 					My Account
 				</a>
 			</p>
 		</div>
 		<div id="banner_button_2" class="banner_button">
 			<p>
-				<a href="{% url 'gamer_view:logout' %}"  style="color:white; text-decoration:none">
-					Logout
-				</a>
+				<a href="{% url 'gamer_view:logout' %}" id="format_hyperlink">Logout</a>
 			</p>
 		</div>
-
 		{% else %}
 		<div id="banner_button_1" class="banner_button">
-		  <p>
-			  <a href="{% url 'gamer_view:login' %}" style="color:white; text-decoration:none">Sign In</a>
-		  </p>
+			<p>
+				<a href="{% url 'gamer_view:login' %}" id="format_hyperlink">Sign In</a>
+			</p>
 		</div>
 		<div id="banner_button_2" class="banner_button">
-		  <p>
-			  <a href="{% url 'gamer_view:register' %}" style="color:white; text-decoration:none">Register</a>
-		  </p>
+			<p>
+				<a href="{% url 'gamer_view:register' %}" id="format_hyperlink">Register</a>
+			</p>
 		</div>
 		{% endif %}
+
 	</body>
 </html>

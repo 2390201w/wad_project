@@ -1,0 +1,14 @@
+#add_page_error {
+	font-size: 20px;
+	top: 13%;
+}
+
+#add_page_details {
+	top: 1.5%;
+}
+
+#add_page_button {
+	align: center;
+	bottom: 36px;
+	-webkit-text-stroke: 0px;
+}

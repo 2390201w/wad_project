@@ -6,18 +6,20 @@
 {% endblock %}
 
 {% block body_block %}
+
+	<!-- 'Add Page' content box -->
     <div class="content_box">
-	<p>Add a Game</p>
+		<p>Add a Game</p>
 		{% for mess in messages %}
-			<div id="error_message" style="font-size:20px; top:13%"><p>{{ mess }}</p></div>
+			<div class="error_message" id="add_page_error"><p>{{ mess }}</p></div>
 		{% endfor %}
-		<div id="login_details" style="top:1.5%">
-		<form id="page_form" method="post" action="{% url 'gamer_view:add_page' %}" enctype="multipart/form-data">
-			{% csrf_token %}
-			{{ form.as_p }}
-		</div>	
-		
-			<input type="submit" name="submit" value="Add Game" class="button" style="align:center; bottom:36px" />
+		<div class="input_details" id="add_page_details">
+			<form id="page_form" method="post" action="{% url 'gamer_view:add_page' %}" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ form.as_p }}
+			</div>	
+			<input type="submit" name="submit" value="Add Game" class="button" id="add_page_button" />
 		</form>
 	</div>
+	
 {% endblock %}

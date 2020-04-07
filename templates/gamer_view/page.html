@@ -2,20 +2,28 @@
 {% load static %}
 
 {% block title_block %}
+
+	<!-- verify game existence -->
     {% if page %}
         {{ page.gamename }}
     {% else %}
         Unknown Game
     {% endif %}
+	
 {% endblock %}
 
 {% block body_block %}
+
+	<!-- game page content box -->
 	<div class="content_box" id="page_box">
+		<!-- verify game existence, otherwise display error message -->
 		{% if page %}
+		
+			<!-- game content box -->
 			<div class="game_info">
 				<p>{{ page.gamename }}</p>
 				<div class="page_button">
-					<a href= {% url 'gamer_view:show_category' page.cat %} style="color:white; text-decoration:none"><p>Category: {{ page.cat }}</p></a>
+					<a href= {% url 'gamer_view:show_category' page.cat %} id="format_hyperlink"><p>Category: {{ page.cat }}</p></a>
 				</div>
 				<div class="page_button" id="description">
 					<p>Description: {{ page.description }}</p>
@@ -23,50 +31,58 @@
 			</div>
 			<div class="bar"></div>
 			<img src="{{ page.image.url }}" id="game_image" border="2" alt="{{ page.gamename }}">
-			<div id="page_box" style="font-size:40px; left:61.5%; top:91.5%">
+			<div id="average_rating">
 				Average Rating: {{ rating }}
 			</div>
-			<div class="content_box" style="height:auto; top:68%; margin-top:40px; margin-bottom:40px; padding-bottom:20px">
+			
+			<!-- review content box -->
+			<div class="content_box" id="review_box">
 				<p>Reviews:
+				
+				<!-- add a button to create a review if the user is authorised -->
 				{% if request.user.is_authenticated %}
-					<div class="banner_button" style="width:200px; position:relative; left:69%; top:-89px; -webkit-text-stroke: 0px; margin-bottom:-80px">
-						<p><a href="{% url 'gamer_view:add_review' %}" style="color:white; text-decoration:none">Add Review</a></p>
+					<div class="banner_button" id="review_add_button">
+						<p><a href="{% url 'gamer_view:add_review' %}" id="format_hyperlink">Add Review</a></p>
 					</div>
 				{% endif %}
+				
+				<!-- format each review in a box with the creator's name, rating and description -->
 				{% if reviews %}
 					{% for rev in reviews %}
 						<div class="page_button" id="description">
 							<p>{{ rev.madeby.user.username }}:
 								{% if rev.rating == 1 %}
-									<img src={%static "images/1.png" %} style="height:10px" alt="Rating">
+									<img src={%static "images/1.png" %} id="format_rating" alt="Rating">
 								{% endif %}
 								{% if rev.rating == 2 %}
-									<img src={%static "images/2.png" %} style="height:10px" alt="Rating">
+									<img src={%static "images/2.png" %} id="format_rating" alt="Rating">
 								{% endif %}
 								{% if rev.rating == 3 %}
-									<img src={%static "images/3.png" %} style="height:10px" alt="Rating">
+									<img src={%static "images/3.png" %} id="format_rating" alt="Rating">
 								{% endif %}
 								{% if rev.rating == 4 %}
-									<img src={%static "images/4.png" %} style="height:10px" alt="Rating">
+									<img src={%static "images/4.png" %} id="format_rating" alt="Rating">
 								{% endif %}
 								{% if rev.rating == 5 %}
-									<img src={%static "images/5.png" %} style="height:10px" alt="Rating">
+									<img src={%static "images/5.png" %} id="format_rating" alt="Rating">
 								{% endif %}
 							</p>
 							{{ rev.review }}
 						</div>
 					{% endfor %}
+					
+				<!-- message for if no reviews exist -->
 				{% else %}
-					<p> No reviews available</p>
+					<p id="no_review_message">  No reviews available</p>
 				{% endif %}
 			</div>
+		<!-- message for if the game does not exist -->
 		{% else %}
-			<div style="text-align: center; padding:60px">
+			<div id="no_game_error_message">
 				The specified game does not exist.
 			</div>
 		{% endif %}
 
 	</div>
-	
 
 {% endblock %}

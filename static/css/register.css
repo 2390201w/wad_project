@@ -1,21 +1,48 @@
-#register_page{
-    position: relative;
-    top: 70px;
-    font-size: 40px;
-    text-align: center;
-    font-family: Bahnschrift;
-    color:white;
-	-webkit-text-stroke: 0px;
+.errorlist {
+  font-size: 24px;
+  position: relative;
+  text-align: center;
+  left: -2%;
+  color: red;
+  height: 0px;
+  line-height: 20px;
+  margin-top: -30px;
+  list-style-type: none;
 }
 
-.errorlist{
-	font-size: 24px;
-	position: relative;
-	text-align: center;
-	left: -2%;
-	color: red;
-	height: 0px;
-	line-height: 20px;
-	margin-top: -30px;
-	list-style-type: none;
+#register_content_box {
+  height: auto;
+  padding-bottom: 260px;
+}
+
+#register_page {
+  position: relative;
+  top: 70px;
+  font-size: 40px;
+  text-align: center;
+  font-family: Bahnschrift;
+  color: white;
+  -webkit-text-stroke: 0px;
+}
+
+#register_button {
+  bottom: -186px;
+}
+
+#successful_register_content_box {
+  height: 200px;
+  margin-bottom: -280px;
+  padding-bottom: 40px;
+}
+
+#register_homepage_return_button {
+  left: 50%;
+  line-height: 93px;
+}
+
+#register_homepage_return_button_text {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  -webkit-text-stroke: 0px;
 }

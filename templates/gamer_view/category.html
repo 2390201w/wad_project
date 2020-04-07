@@ -2,31 +2,41 @@
 {% load static %}
 
 {% block title_block %}
+
+	<!-- verification of category existence -->
     {% if cat %}
         {{ cat.category }}
     {% else %}
         Unknown Category
     {% endif %}
+
 {% endblock %}
 
 {% block body_block %}
+
+	<!-- category content box -->
 	{% if cat %}
 		<div class="content_box" id="category_box">
 			<p>{{ cat.category }}</p>
+			<!-- check if pages exist, else format for empty category -->
 			{% if pages %}
 				<div style="text-align:left">
 					{% for page in pages %}
-						<a href={% url 'gamer_view:show_page' cat.category page.slug %}><img src="{{ page.image.url }}" id="format_image" style="left:1.5%; margin-bottom:40px" border="2" alt="{{ page.gamename }}"></a>
+						<a href={% url 'gamer_view:show_page' cat.category page.slug %}><img src="{{ page.image.url }}" id="category_images" alt="{{ page.gamename }}"></a>
 					{% endfor %}
 				{% else %}
-					<p> There is currently no games in this category</p>
+					<div id="empty_category_message">
+						<p> There are currently no games in this category</p>
+					</div>
 				</div>
 			{% endif %}
 		</div>
 	{% else %}
-		<div class="content_box" id="page_box" style="text-align: center;">
+		<!-- format for non-existent category -->
+		<div class="content_box" id="no_category_message">
 			<p>The specified Category does not exist.</p>
 		</div>
     {% endif %}
+
 {% endblock %}
 		

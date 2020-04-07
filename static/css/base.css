@@ -3,6 +3,56 @@ body, html {
   background: linear-gradient(rgba(35, 115, 222), rgba(0, 59, 110)) fixed;
 }
 
+.banner_button {
+  border-radius: 10px;
+  border: 2px solid #000000;
+  background: #4572C4;
+  width: 140px;
+  height: 50px;
+  text-align: center;
+  line-height: 0px;
+  color: white;
+  font-size: 28px;
+  font-family: "Bahnschrift";
+}
+
+.content_box {
+  border-radius: 70px;
+  border: 4px solid #4572C4;
+  background: #595959;
+  width: 50%;
+  height: 70%;
+  font-size: 60px;
+  text-align: center;
+  line-height: 10px;
+  color: white;
+  font-family: "Bahnschrift";
+  -webkit-text-stroke: 1px #4572C4;
+  position: absolute;
+  top: 200px;
+  left: 25%;
+}
+
+.error_message {
+	font-size: 24px;
+	position: absolute;
+	width: 100%;
+	top: 150px;
+	color: red;
+	-webkit-text-stroke: 0px;
+}
+
+.input_details {
+    font-size: 45px;
+	position: relative;
+	top: 100px;
+	margin-bottom: 30px;
+    text-align: center;
+    font-family: Bahnschrift;
+    color: white;
+	-webkit-text-stroke: 0px;
+}
+
 #banner {
   height: 150px;
   width: auto;
@@ -21,19 +71,6 @@ body, html {
   top: -15px;
   left: 50%;
   margin-left: -305px;
-}
-
-.banner_button {
-  border-radius: 10px;
-  border: 2px solid #000000;
-  background: #4572C4;
-  width: 140px;
-  height: 50px;
-  text-align: center;
-  line-height: 0px;
-  color: white;
-  font-size: 28px;
-  font-family: "Bahnschrift";
 }
 
 #banner_button_1 {
@@ -58,20 +95,17 @@ body, html {
   margin-left: 10%;
 }
 
-.content_box {
-  border-radius: 70px;
-  border: 4px solid #4572C4;
-  background: #595959;
-  width: 50%;
-  height: 70%;
-  font-size: 60px;
-  text-align: center;
-  line-height: 10px;
-  color: white;
-  font-family: "Bahnschrift";
-  -webkit-text-stroke: 1px #4572C4;
-  
-  position: absolute;
-  top: 200px;
-  left: 25%;
+#format_hyperlink {
+	color: white;
+	text-decoration: none;
+}
+
+#format_icon {
+	width: 150px;
+}
+
+#format_my_account_button {
+	color: white;
+	text-decoration: none;
+	font-size: 24px;
 }

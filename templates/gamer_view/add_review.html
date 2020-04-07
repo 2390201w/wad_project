@@ -4,27 +4,31 @@
 {% block title_block %}
 	Add Review
 {% endblock %}
-	++
+
 {% block body_block %}
+
+	<!-- 'Add Review' content box -->
 	<div class="content_box">
 		<p>Make a review</p>
 		{% for mess in messages %}
-			<div id="error_message" style="font-size:20px; top:30%"><p>{{ mess }}</p></div>
+			<div class="error_message" id="add_review_error"><p>{{ mess }}</p></div>
 		{% endfor %}
-			<form id="login_details" method="POST" action="{% url 'gamer_view:add_review' %}" style="top:60px">
+			<form method="POST" action="{% url 'gamer_view:add_review' %}" class="input_details" id="add_review_input">
 				{% csrf_token %}
 				{{ form.as_p }}
 				
-				<div class="stars" data-rating="1" style="line-height:130px">
+				<div class="stars" data-rating="1" id="format_add_review_stars">
 					<span class="star">&nbsp;</span>
 					<span class="star">&nbsp;</span>
 					<span class="star">&nbsp;</span>
 					<span class="star">&nbsp;</span>
 					<span class="star">&nbsp;</span>
 				</div>
-				<input type="submit" value="Create Review" class="button" style="line-height:100px; top:350px" />
+				<input type="submit" value="Create Review" class="button" id="add_review_button" />
 			</form>
 	</div>
 	
+	<!-- call to star rating javascript -->
 	<script src="{% static 'js/star.js' %}"></script>
+	
 {% endblock %}

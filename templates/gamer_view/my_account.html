@@ -6,47 +6,53 @@
 {% endblock %}
 
 {% block body_block %}
+
+	<!-- account content box and user image -->
 	<div class="content_box">
 	<p>Welcome, {{ user.user.username }}</p>
-	<p><img src="{{ user.picture.url }}" id="format_image" border="2" style="height:280px; left:0px; margin-left: 0px; margin-top:40px" alt="Profile Picture"></p>
+	<p><img src="{{ user.picture.url }}" id="format_profile_image" alt="Profile Picture"></p>
 	</div>
 
-	<div id="content_text" style="margin-left:-22.5%; top: 78.75%; width:50%">
-		<div class="add_button">
-				<a href="{% url 'gamer_view:add_review' %}" style="color:white; text-decoration:none; line-height:85px;">Add Review</a>
-		</div>
-		<div class="add_button" style="margin-left:32.75%">
-				<a href="{% url 'gamer_view:add_category' %}"  style="color:white; text-decoration:none; line-height:85px;">Add Category</a>
-		</div>
-		<div class="add_button" style="margin-left:65.5%;">
-				<a href="{% url 'gamer_view:add_page' %}"  style="color:white; text-decoration:none; line-height:85px;">Add Game</a>
-		</div>
+	<!-- profile authorised action buttons -->
+	<div class="add_button" id="add_review_box">
+			<a href="{% url 'gamer_view:add_review' %}" id="add_buttons_text">Add Review</a>
+	</div>
+	<div class="add_button" id="add_category_box">
+			<a href="{% url 'gamer_view:add_category' %}" id="add_buttons_text">Add Category</a>
+	</div>
+	<div class="add_button" id="add_game_box">
+			<a href="{% url 'gamer_view:add_page' %}" id="add_buttons_text">Add Game</a>
 	</div>
 	
-	<div class="content_box" style="top:95.5%; height:auto; margin-bottom:40px">
+	<!-- user reviews content box -->
+	<div class="content_box" id="review_box">
 		{% if myReviews %}
 		<p> Your Reviews: </p>
 		{% for rev in myReviews %}
-			<div class="add_button" style="-webkit-text-stroke: 0px; font-size:1vw; line-height:10px; left:50%; margin-left:-120px">
-				<p><a href={% url 'gamer_view:show_page' rev.gamename.cat rev.gamename.slug %} style="color:white; text-decoration:none">{{ rev.gamename }}</a><br></p>
+			<!-- display the game name and the user's rating for it -->
+			<div class="add_button" id="review_game_name_button">
+				<p><a href={% url 'gamer_view:show_page' rev.gamename.cat rev.gamename.slug %} id="format_hyperlink">{{ rev.gamename }}</a><br></p>
+				<!-- display appropriate rating image for the review rating -->
 				{% if rev.rating == 1 %}
-				<p><img src={%static "images/1.png" %} style="height:20px; margin-top:-5px" alt="Rating"></p>
+				<p><img src={%static "images/1.png" %} id="format_user_ratings" alt="Rating"></p>
 				{% endif %}
 				{% if rev.rating == 2 %}
-				<p><img src={%static "images/2.png" %} style="height:20px; margin-top:-5px" alt="Rating"></p>
+				<p><img src={%static "images/2.png" %} id="format_user_ratings" alt="Rating"></p>
 				{% endif %}
 				{% if rev.rating == 3 %}
-				<p><img src={%static "images/3.png" %} style="height:20px; margin-top:-5px" alt="Rating"></p>
+				<p><img src={%static "images/3.png" %} id="format_user_ratings" alt="Rating"></p>
 				{% endif %}
 				{% if rev.rating == 4 %}
-				<p><img src={%static "images/4.png" %} style="height:20px; margin-top:-5px" alt="Rating"></p>
+				<p><img src={%static "images/4.png" %} id="format_user_ratings" alt="Rating"></p>
 				{% endif %}
 				{% if rev.rating == 5 %}
-				<p><img src={%static "images/5.png" %} style="height:20px; margin-top:-5px" alt="Rating"></p>
+				<p><img src={%static "images/5.png" %} id="format_user_ratings" alt="Rating"></p>
 				{% endif %}
 			</div>
-			<div class="page_button" id="description" style="margin-top:200px; padding:1%; left:50.9%; margin-bottom:60px; height:110px">{{ rev.review }}</div>
+			<!-- review description written by the user -->
+			<div class="page_button" id="format_user_description">{{ rev.review }}</div>
 		{% endfor %}
 	{% endif %}
 	</div>
+	
 {% endblock %}

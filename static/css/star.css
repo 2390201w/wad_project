@@ -1,11 +1,11 @@
 .star{
 	color: goldenrod;
 	font-size: 2.0rem;
-	padding: 0 1rem; /* space out the stars */
+	padding: 0 1rem;   /* space out the stars */
 }
         
 .star::before{
-	content: '\2606';    /* star outline */
+	content: '\2606';  /* star outline */
 	cursor: pointer;
 }
         
