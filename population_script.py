@@ -57,7 +57,7 @@ def populate():
             {'gamename': 'League Of Legends', 'category':'MOBA','date': '2012-03-20','description': "destroy towers",'image': 'game_images/lol.jpg','views':'50'},
             {'gamename': 'Dota2', 'category':'MOBA','date': '2015-05-06','description': "destroy towers 2",'image': 'game_images/dota.jpg','views':'35'},
             {'gamename': 'Smite', 'category':'MOBA','date': '2016-08-15','description': "destroy towers 3",'image': 'game_images/smite.jpg','views':'30'},
-            {'gamename': 'Monster Hunter', 'category':'Action','date': '2020-01-12','description': "Hunt monsters",'image': 'game_images/MH.jfif','views':'45'},
+            {'gamename': 'Monster Hunter', 'category':'Action','date': '2020-01-12','description': "Hunt monsters",'image': 'game_images/MH.jfif','views':'50'},
             {'gamename': 'Dark Souls', 'category':'Action','date': '2011-12-01','description': "Gather souls",'image': 'game_images/ds.jpg','views':'30'},
             {'gamename': 'The Witcher 3', 'category':'Action','date': '2018-04-23','description': "Story driven",'image': 'game_images/witcher.jfif','views':'40'},
             {'gamename': 'Fifa 18', 'category':'Sport','date': '2018-11-29','description': "Play Football",'image': 'game_images/fifa.jpg','views':'8'},
@@ -81,10 +81,11 @@ def populate():
              {'gamename': 'Animal Crossing', 'review' : 'A chill game','madeby':'Ben', 'date':'2020-04-02', 'rating': '3'},
              {'gamename': 'Monster Hunter', 'review' : 'Never gets boring due to the constant new free DLCs','madeby':'Adam', 'date':'2020-02-18', 'rating': '5'},
              {'gamename': 'Monster Hunter', 'review' : 'I love the character customisation and the armour designs','madeby':'Ben', 'date':'2020-03-10', 'rating': '4'},
-             {'gamename': 'Dark Souls', 'review' : 'Quiet a lot of exploring and has intresting boss fights','madeby':'Sheldon', 'date':'2011-01-30', 'rating': '4'},
-             {'gamename': 'The Witcher 3', 'review' : 'Story was well executed','madeby':'Sheldon', 'date':'2019-08-12', 'rating': '4'},]
+             {'gamename': 'Dark Souls', 'review' : 'Quiet a lot of exploring and has intresting boss fights','madeby':'Sheldon', 'date':'2012-05-05', 'rating': '4'},
+             {'gamename': 'The Witcher 3', 'review' : 'Story was well executed','madeby':'Sheldon', 'date':'2019-08-12', 'rating': '4'},
+             {'gamename': 'NBA2K20', 'review' : 'BORING!!! Unrealistic gameplay','madeby':'Sheldon', 'date':'2020-01-01', 'rating': '1'},]
 
-           
+
     print("Adding Categories")
     for cat in category:
         add_cat(cat)

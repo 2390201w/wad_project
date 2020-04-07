@@ -59,9 +59,11 @@ def show_categories(request):
             continue 
         # creates a dictionary entry with the name of the category as the key and the list of games as the value 
         cat_list[cat]=page
-        
+
+    # puts the categories with empty games at the end of the dictionary so that it would be displayed last
     for cat in catE:
         cat_list[cat]=catE[cat]
+        
     context_dict['categories']=cat_list
     return render(request, 'gamer_view/categories.html', context=context_dict)
 
@@ -251,9 +253,8 @@ def add_page(request):
     if request.method =='POST':
         form = PageForm(request.POST, request.FILES)
         if form.is_valid():
+            page= form.save(commit=False)
             try:
-                page= form.save(commit=False)
-                
                 if 'image' in request.FILES:
                     page.image = request.FILES['image']
                     
@@ -261,7 +262,7 @@ def add_page(request):
                 
                 return redirect('gamer_view:show_page', page.cat, page.slug)
             except:
-                
+                page.delete()
                 # error message when user tries to add a game with empty field(s)
                 messages.error(request, "Game already exising")
                 return redirect(reverse('gamer_view:add_page'))
@@ -280,10 +281,11 @@ def add_review(request):
         form = ReviewForm(request.POST)
         if form.is_valid():
             review= form.save(commit =False)
-            user=UserProfile.objects.get(user=request.user) 
+            user=UserProfile.objects.get(user=request.user)
             game= (request.POST.get('gamename'))
             revd=Review.objects.filter(madeby=user).values('gamename_id')
-            
+
+            # checks if user already made a review for the game
             for gam in revd:
                 if int(gam['gamename_id']) == int(game):
                     messages.error(request, "Cannot make another review for the same game")
@@ -292,13 +294,13 @@ def add_review(request):
             review= form.save(commit =False)
             user=UserProfile.objects.get(user=request.user)   
             review.madeby=user
-            
             review.save()
             return redirect('gamer_view:show_page', review.gamename.cat, review.gamename.slug)
 
     else:
         form =ReviewForm()
     return render(request, 'gamer_view/add_review.html', context={'form' :form})
+
 '''
     Helper functions:
     getAverage- obtains the all the ratings made in the reviews for a game and calculates its average, returning the integer value
