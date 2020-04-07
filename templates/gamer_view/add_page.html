@@ -9,13 +9,15 @@
     <div class="content_box">
 	<p>Add a Game</p>
 		{% for mess in messages %}
-			<p>{{ mess }}<p>
+			<div id="error_message" style="font-size:20px; top:13%"><p>{{ mess }}</p></div>
 		{% endfor %}
+		<div id="login_details" style="top:1.5%">
 		<form id="page_form" method="post" action="{% url 'gamer_view:add_page' %}" enctype="multipart/form-data">
 			{% csrf_token %}
 			{{ form.as_p }}
-			
-			<input type="submit" name="submit" value="Add Game" class="button" style="align:center; bottom:-186px" />
+		</div>	
+		
+			<input type="submit" name="submit" value="Add Game" class="button" style="align:center; bottom:36px" />
 		</form>
 	</div>
 {% endblock %}

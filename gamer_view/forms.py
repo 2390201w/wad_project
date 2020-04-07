@@ -67,14 +67,34 @@ class CategoryForm(forms.ModelForm):
 
 
 class PageForm(forms.ModelForm):
-    gamename= forms.CharField(max_length=30, label="Game Name", required=True)
+    gamename= forms.CharField(max_length=30, label="Game Name", required=True,
+        widget=forms.TextInput(
+            attrs={
+                'style': 'height:22.5px; position:relative; top:-6px; font-size:16px; width:205px'
+            }
+        )
+    )
     slug= forms.CharField(widget=forms.HiddenInput(), required=False)
-    cat=forms.ModelChoiceField(queryset=Category.objects.all(),label="Category", required=True)
-    description=forms.CharField(max_length=500, required=True)
+    cat=forms.ModelChoiceField(queryset=Category.objects.all(),label="Category", required=True,
+        widget=forms.Select(
+            attrs={
+                'style': 'height:30px; width:150px; position:relative; top:-7px;'
+            }
+        )
+    )
+    description=forms.CharField(max_length=500, required=True,
+        widget=forms.Textarea(
+            attrs={
+                'rows': 4,
+                'cols': 40,
+                'style': 'height:150px; width: 500px; position:relative; top: 70px; font-size: 14px; padding:0.5%; margin-top:-90px'
+            }
+        )
+    )
     image= forms.ImageField(
         widget=forms.FileInput(
             attrs={
-                'style': 'height:22.5px; position:relative; top:-6px; font-size:16px; width:210px'
+                'style': 'height:22.5px; position:relative; top:-6px; font-size:16px; width:210px; padding-top: 70px'
             }
         ),required=True)
     views=forms.IntegerField(widget=forms.HiddenInput(), initial=1)
