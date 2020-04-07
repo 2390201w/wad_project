@@ -23,48 +23,50 @@
 			</div>
 			<div class="bar"></div>
 			<img src="{{ page.image.url }}" id="game_image" border="2" alt="{{ page.gamename }}">
+			<div id="page_box" style="font-size:40px; left:61.5%; top:91.5%">
+				Average Rating: {{ rating }}
+			</div>
+			<div class="content_box" style="height:auto; top:68%; margin-top:40px; margin-bottom:40px; padding-bottom:20px">
+				<p>Reviews:
+				{% if request.user.is_authenticated %}
+					<div class="banner_button" style="width:200px; position:relative; left:69%; top:-89px; -webkit-text-stroke: 0px; margin-bottom:-80px">
+						<p><a href="{% url 'gamer_view:add_review' %}" style="color:white; text-decoration:none">Add Review</a></p>
+					</div>
+				{% endif %}
+				{% if reviews %}
+					{% for rev in reviews %}
+						<div class="page_button" id="description">
+							<p>{{ rev.madeby.user.username }}:
+								{% if rev.rating == 1 %}
+									<img src={%static "images/1.png" %} style="height:10px" alt="Rating">
+								{% endif %}
+								{% if rev.rating == 2 %}
+									<img src={%static "images/2.png" %} style="height:10px" alt="Rating">
+								{% endif %}
+								{% if rev.rating == 3 %}
+									<img src={%static "images/3.png" %} style="height:10px" alt="Rating">
+								{% endif %}
+								{% if rev.rating == 4 %}
+									<img src={%static "images/4.png" %} style="height:10px" alt="Rating">
+								{% endif %}
+								{% if rev.rating == 5 %}
+									<img src={%static "images/5.png" %} style="height:10px" alt="Rating">
+								{% endif %}
+							</p>
+							{{ rev.review }}
+						</div>
+					{% endfor %}
+				{% else %}
+					<p> No reviews available</p>
+				{% endif %}
+			</div>
 		{% else %}
 			<div style="text-align: center; padding:60px">
 				The specified game does not exist.
 			</div>
 		{% endif %}
-		<div id="page_box" style="font-size:40px; left:61.5%; top:91.5%">
-			Average Rating: {{ rating }}
-		</div>
+
 	</div>
 	
-	<div class="content_box" style="height:auto; top:68%; margin-top:40px; margin-bottom:40px; padding-bottom:20px">
-		<p>Reviews:
-		{% if request.user.is_authenticated %}
-		<div class="banner_button" style="width:200px; position:relative; left:69%; top:-89px; -webkit-text-stroke: 0px; margin-bottom:-80px">
-			<p><a href="{% url 'gamer_view:add_review' %}" style="color:white; text-decoration:none">Add Review</a></p>
-		</div>
-		{% endif %}
-		{% if reviews %}
-			{% for rev in reviews %}
-			<div class="page_button" id="description">
-				<p>{{ rev.madeby.user.username }}:
-				{% if rev.rating == 1 %}
-				<img src={%static "images/1.png" %} style="height:10px" alt="Rating">
-				{% endif %}
-				{% if rev.rating == 2 %}
-				<img src={%static "images/2.png" %} style="height:10px" alt="Rating">
-				{% endif %}
-				{% if rev.rating == 3 %}
-				<img src={%static "images/3.png" %} style="height:10px" alt="Rating">
-				{% endif %}
-				{% if rev.rating == 4 %}
-				<img src={%static "images/4.png" %} style="height:10px" alt="Rating">
-				{% endif %}
-				{% if rev.rating == 5 %}
-				<img src={%static "images/5.png" %} style="height:10px" alt="Rating">
-				{% endif %}
-				</p>
-				{{ rev.review }}
-			</div>
-			{% endfor %}
-			{% else %}
-				<p> No reviews available</p>
-		{% endif %}
-	</div>
+
 {% endblock %}
