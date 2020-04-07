@@ -294,8 +294,8 @@ def add_review(request):
 '''
 
 def getAverage(game):
-    avg= Review.objects.filter(gamename=game).aggregate(Avg('rating', output_field=IntegerField()))
-    average=avg['rating__avg']
+    avg= Review.objects.filter(gamename=game).aggregate(Avg('rating'))
+    average=round(avg['rating__avg'], 2)
     return average
 
 def removeNull(games):

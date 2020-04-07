@@ -8,12 +8,12 @@
 }
 
 #game_image {
-  height:370px;
-  width:585px;
+  height:340px;
+  width:538px;
   color:black;
   position: absolute;
   top: 40px;
-  right: 40px;
+  right: 60px;
 }
 
 .game_info {
