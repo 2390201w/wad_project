@@ -25,8 +25,8 @@
 	</div>
 	
 	<!-- user reviews content box -->
-	<div class="content_box" id="review_box">
 		{% if myReviews %}
+		<div class="content_box" id="review_box">
 		<p> Your Reviews: </p>
 		{% for rev in myReviews %}
 			<!-- display the game name and the user's rating for it -->
@@ -52,7 +52,8 @@
 			<!-- review description written by the user -->
 			<div class="page_button" id="format_user_description">{{ rev.review }}</div>
 		{% endfor %}
+		</div>
 	{% endif %}
-	</div>
+
 	
 {% endblock %}
