@@ -23,7 +23,7 @@ class Page(models.Model):
 					   		   
     date_created=models.DateField(default= datetime.now)
     description=models.CharField(max_length=500)
-    image = models.ImageField(upload_to='game_images', blank=True)
+    image = models.ImageField(upload_to='game_images')
     views=models.PositiveIntegerField(default=0)
 
     def save(self, *args, **kwargs):
