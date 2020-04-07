@@ -50,14 +50,18 @@ def show_categories(request):
     context_dict={}
     cat_list={}
     cats = Category.objects.all()
-    
+    catE={}
     for cat in cats:
-
         # gets the games related to the category  
         page=list(Page.objects.filter(cat=cat.category).order_by('-views')[:3])
-
+        if len(page) ==0:
+            catE[cat]=page
+            continue 
         # creates a dictionary entry with the name of the category as the key and the list of games as the value 
         cat_list[cat]=page
+        
+    for cat in catE:
+        cat_list[cat]=catE[cat]
     context_dict['categories']=cat_list
     return render(request, 'gamer_view/categories.html', context=context_dict)
 
