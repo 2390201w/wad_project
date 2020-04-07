@@ -1,5 +1,5 @@
 from django.contrib import admin
-from gamer_view.models import Category, Page, Review, UserProfile
+from gamer_view.models import Category, Page, Review
 
 class PageAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('gamename',)}
@@ -9,4 +9,4 @@ class PageAdmin(admin.ModelAdmin):
 admin.site.register(Category)
 admin.site.register(Page, PageAdmin)
 admin.site.register(Review)
-admin.site.register(UserProfile)
+

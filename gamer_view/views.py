@@ -247,19 +247,20 @@ def add_page(request):
     if request.method =='POST':
         form = PageForm(request.POST, request.FILES)
         if form.is_valid():
-            page= form.save(commit=False)
-            
-            if 'image' in request.FILES:
-                page.image = request.FILES['image']
+            try:
+                page= form.save(commit=False)
                 
-            page.save()
-            
-            return redirect('gamer_view:show_page', page.cat, page.slug)
-        else:
-            
-            # error message when user tries to add a game with empty field(s)
-            messages.error(request, "Fields must not be empty")
-            return redirect(reverse('gamer_view:add_page'))
+                if 'image' in request.FILES:
+                    page.image = request.FILES['image']
+                    
+                page.save()
+                
+                return redirect('gamer_view:show_page', page.cat, page.slug)
+            except:
+                
+                # error message when user tries to add a game with empty field(s)
+                messages.error(request, "Game already exising")
+                return redirect(reverse('gamer_view:add_page'))
     else:
         form=PageForm()
 
