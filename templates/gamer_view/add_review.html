@@ -8,7 +8,9 @@
 {% block body_block %}
 	<div class="content_box">
 		<p>Make a review</p>
-		
+		{% for mess in messages %}
+			<div id="error_message" style="font-size:20px; top:30%"><p>{{ mess }}</p></div>
+		{% endfor %}
 			<form id="login_details" method="POST" action="{% url 'gamer_view:add_review' %}" style="top:60px">
 				{% csrf_token %}
 				{{ form.as_p }}

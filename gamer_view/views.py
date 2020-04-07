@@ -280,17 +280,25 @@ def add_review(request):
         form = ReviewForm(request.POST)
         if form.is_valid():
             review= form.save(commit =False)
-            user=UserProfile.objects.get(user=request.user)
+            user=UserProfile.objects.get(user=request.user) 
+            game= (request.POST.get('gamename'))
+            revd=Review.objects.filter(madeby=user).values('gamename_id')
+            
+            for gam in revd:
+                if int(gam['gamename_id']) == int(game):
+                    messages.error(request, "Cannot make another review for the same game")
+                    return redirect('gamer_view:add_review')
+
+            review= form.save(commit =False)
+            user=UserProfile.objects.get(user=request.user)   
             review.madeby=user
             
             review.save()
             return redirect('gamer_view:show_page', review.gamename.cat, review.gamename.slug)
-        else:
-            return redirect(reverse('gamer_view:add_review'))
+
     else:
         form =ReviewForm()
     return render(request, 'gamer_view/add_review.html', context={'form' :form})
-
 '''
     Helper functions:
     getAverage- obtains the all the ratings made in the reviews for a game and calculates its average, returning the integer value
