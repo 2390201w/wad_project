@@ -18,6 +18,8 @@
 					{% for page in pages %}
 						<a href={% url 'gamer_view:show_page' cat.category page.slug %}><img src="{{ page.image.url }}" id="format_image" style="left:1.5%; margin-bottom:40px" border="2" alt="{{ page.gamename }}"></a>
 					{% endfor %}
+				{% else %}
+					<p> There is currently no games in this category</p>
 				</div>
 			{% endif %}
 		</div>
