@@ -307,8 +307,10 @@ def add_review(request):
 
 def getAverage(game):
     avg= Review.objects.filter(gamename=game).aggregate(Avg('rating'))
-    average=round(avg['rating__avg'], 2)
-    return average
+    if avg['rating__avg']==None:
+        return avg['rating__avg']
+    else:
+        return round(avg['rating__avg'], 2)
 
 def removeNull(games):
     return{k:v for k, v in games.items() if v is not None}    

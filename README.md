@@ -12,7 +12,7 @@
 1. Navigate to the `[path]/wad_project` where `population_script.py` is stored
 2. Then, enter the command `python manage.py makemigrations`
 3. Next, migrate the database with `python manage.py migrate`
-4. Now populate the database with `python manage.py population_scrip.py`
+4. Now populate the database with `python manage.py population_script.py`
 
 #### Start website
 1. Navigate to the `[path]/wad_project` where `manage.py` is stored
