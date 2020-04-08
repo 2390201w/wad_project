@@ -1,5 +1,5 @@
 .errorlist {
-  font-size: 24px;
+  font-size: 20px;
   position: relative;
   text-align: center;
   left: -2%;
@@ -17,7 +17,7 @@
 
 #register_page {
   position: relative;
-  top: 70px;
+  top: 60px;
   font-size: 40px;
   text-align: center;
   font-family: Bahnschrift;
@@ -26,7 +26,7 @@
 }
 
 #register_button {
-  bottom: -186px;
+  bottom: -196px;
 }
 
 #successful_register_content_box {
