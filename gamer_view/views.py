@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from gamer_view.models import Category, Page, Review ,User, UserProfile
 from django.contrib import messages
 from django.db.models import Avg, IntegerField
+from datetime import datetime
 
 '''
     Home view:
@@ -97,7 +98,7 @@ def show_category(request, category_name):
 '''
 def show_page(request, category_name, game):
     context_dict={}
-
+    
     try:
         page = Page.objects.get(slug=game)
 
@@ -115,6 +116,9 @@ def show_page(request, category_name, game):
         context_dict['page']=None
         context_dict['reviews']=None
         context_dict['rating']=None
+
+    visitor_handler(request,Page.objects.get(slug=game))
+    
 
     return render(request, 'gamer_view/page.html', context=context_dict)
 
@@ -219,7 +223,7 @@ def my_account(request):
     
     user= UserProfile.objects.get(user=request.user)
     Reviews= Review.objects.filter(madeby=user)
-    
+
     return render(request, 'gamer_view/my_account.html', context={'myReviews':Reviews,
                                                                  'user': user})
 '''
@@ -316,3 +320,38 @@ def getAverage(game):
 
 def removeNull(games):
     return{k:v for k, v in games.items() if v is not None}    
+
+# get or set value in cookie
+def get_server_side_cookie(request, cookie, default_val=None):
+    val = request.session.get(cookie)
+    if not val:
+        val = default_val
+    return val
+    
+# View Counter
+def visitor_handler(request,game):
+
+    #get current view number
+    visits = Page.objects.get(gamename=game).views
+
+    #get/set last visit time
+    last_visit_cookie = get_server_side_cookie(request, 'last_visit', str(datetime.now()))
+    last_visit_time = datetime.strptime(last_visit_cookie[:-7], '%Y-%m-%d %H:%M:%S')
+
+    #get current visit time
+    current_visit_cookie = get_server_side_cookie(request,'current_visit', str(datetime.now()))
+    current_visit_time = datetime.strptime(current_visit_cookie[:-7], '%Y-%m-%d %H:%M:%S')
+
+    #if not same day or first time meet this page, count +1
+    if (datetime.now() - last_visit_time).days > 0 or current_visit_time == last_visit_time:
+        visits = visits + 1
+        # Update the last visit cookie now that we have updated the count
+        request.session['last_visit'] = str(datetime.now())
+    else:
+        #remain same & do nothing
+        request.session['last_visit'] = last_visit_cookie
+
+    #Update views in database
+    thisgame = Page.objects.get(gamename=game)
+    thisgame.views = visits
+    thisgame.save()
